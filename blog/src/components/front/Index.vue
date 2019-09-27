@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="index">
         <Top></Top>
         <el-container>
             <el-header style="height:30%">
@@ -34,5 +34,7 @@
 </script>
 
 <style>
+.index{
 
+}
 </style>

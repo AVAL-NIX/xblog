@@ -31,17 +31,25 @@
                 content: '',
                 toc: '',
                 divHeights: [],
-                data: '',
+                item:{}
             }
         },
-        created() {},
+        created() {
+        },
         mounted: function() {
+            this.$get('home/article/'+this.$route.params.id).then(res=>{
+                 this.$resultCheck(res.data, true, true).then(res => {
+                    this.item = res.data
+                    //数据解析
+                    this.execDataAnalyze()
+                }).catch(res => {})
+            })
             //marked格式设置
             let renderer = new marked.Renderer();
             renderer.heading = (text, level, raw) => {
                 let anchor = this.addItem(text, level);
                 // anchor = anchor.replace("#","")
-                return `<a id=${anchor} class="anchor-fix"></a><h${level}>${text}</h${level}>`;
+                return `<a id=#${anchor} class="anchor-fix"></a><h${level}>${text}</h${level}>`;
             };
             marked.setOptions({
                 renderer: renderer,
@@ -53,29 +61,31 @@
                 smartLists: true,
                 smartypants: false
             });
-            //数据解析
-            let content = marked(this.data);
-            this.content = content.replace("[TOC]", "")
-            this.toc = this.toHTML();
-            let MyComponent = Vue.extend({
-                template: this.toc,
-                methods: {
-                    addClass(e) {
-                        $("li").removeClass("activti")
-                        $(this.$refs[e]).parent("li").addClass("activti")
-                    },
-                }
-            });
-            var component = new MyComponent().$mount();
-            document.getElementById('article-toc').appendChild(component.$el);
-            //启动监听
-            window.addEventListener("scroll", this.handleScroll);
-            for (let i = 0; i < this.tocDom.length; i++) {
-                this.divHeights.push($(this.tocDom[i]).offset().top);
-            }
+
         },
         components: {},
         methods: {
+            execDataAnalyze(){
+                let content = marked(this.item.content);
+                this.content = content.replace("[TOC]", "")
+                this.toc = this.toHTML();
+                let MyComponent = Vue.extend({
+                    template: this.toc,
+                    methods: {
+                        addClass(e) {
+                            $("li").removeClass("activti")
+                            $(this.$refs[e]).parent("li").addClass("activti")
+                        },
+                    }
+                });
+                var component = new MyComponent().$mount();
+                document.getElementById('article-toc').appendChild(component.$el);
+                //启动监听
+                window.addEventListener("scroll", this.handleScroll);
+                for (let i = 0; i < this.tocDom.length; i++) {
+                    this.divHeights.push($(this.tocDom[i]).offset().top);
+                }
+            },
             changeClass(id) {
                 $("li").removeClass("activti")
                 if (id) {

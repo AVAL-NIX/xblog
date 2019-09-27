@@ -6,7 +6,7 @@
                     <el-card shadow="hover" style="margin:5px;" v-for="(i,index) in list" :key="index">
                         <el-row :gutter="8">
                             <el-col :span="24">
-                                <router-link :to="'/article/'+ i">
+                                <router-link :to="{ name: 'ArticleIndex', params: { id: i.id}}">
                                     <h2 class="title-hide">{{i.title}}</h2>
                                 </router-link>
                             </el-col>

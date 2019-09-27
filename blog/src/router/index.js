@@ -11,6 +11,7 @@ export default new Router({
       component: Index
     },
     {
+        name:'ArticleIndex',
       path: '/article/:id',
       component: ArticleIndex
     }
