@@ -48,8 +48,8 @@
             let renderer = new marked.Renderer();
             renderer.heading = (text, level, raw) => {
                 let anchor = this.addItem(text, level);
-                // anchor = anchor.replace("#","")
-                return `<a id=#${anchor} class="anchor-fix"></a><h${level}>${text}</h${level}>`;
+                anchor = anchor.replace("#","")
+                return `<a id=${anchor} class="anchor-fix"></a><h${level}>${text}</h${level}>`;
             };
             marked.setOptions({
                 renderer: renderer,
@@ -72,6 +72,7 @@
                 let MyComponent = Vue.extend({
                     template: this.toc,
                     methods: {
+                        //点击添加样式
                         addClass(e) {
                             $("li").removeClass("activti")
                             $(this.$refs[e]).parent("li").addClass("activti")
@@ -80,16 +81,21 @@
                 });
                 var component = new MyComponent().$mount();
                 document.getElementById('article-toc').appendChild(component.$el);
+                console.log("this.tocDom[i]",this.tocDom)
                 //启动监听
                 window.addEventListener("scroll", this.handleScroll);
+                console.log("this.tocDom[i]",this.tocDom , $(this.tocDom[0]).offset().top    )
                 for (let i = 0; i < this.tocDom.length; i++) {
                     this.divHeights.push($(this.tocDom[i]).offset().top);
                 }
+                console.log("this.divHeights[i]",this.divHeights)
             },
+            //滚动添加样式
             changeClass(id) {
+                console.log("id",id)
                 $("li").removeClass("activti")
                 if (id) {
-                    $(id).addClass("activti")
+                    $("#TOC"+id).addClass("activti")
                 }
             },
             handleScroll() {
@@ -98,6 +104,7 @@
                     document.documentElement.scrollTop ||
                     document.body.scrollTop
                 let k;
+                console.log("this.divHeights",this.divHeights)
                 for (let i = 0; i < this.divHeights.length; i++) {
                     if (scrollTop > this.divHeights[i] - 50) {
                         this.changeClass(this.tocDom[i])
@@ -128,7 +135,7 @@
                 };
                 const addLI = (anchor, text) => {
                     let id = anchor.replace("#", "")
-                    result += `<li><a id=${id}  href=${anchor}  @click="addClass('${anchor}')">${text}</a></li>`;
+                    result += `<li><a id='TOC${id}'  href=${anchor} ref=${anchor} @click="addClass('${anchor}')">${text}</a></li>`;
                 };
                 this.tocArr.forEach(function(item) {
                     let levelIndex = levelStack.indexOf(item.level);

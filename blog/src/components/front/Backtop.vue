@@ -1,4 +1,4 @@
-   <!--  <template>
+ <template>
  <div class="Backtop">
         <el-row :gutter="8">
             <el-col :span="12  " :offset="6">
@@ -14,29 +14,22 @@
             </el-col>
         </el-row>
 
-    </div>
-
-      <el-backtop target=".index" :bottom="100" :right="100">
-                UPAAAAAAAAAA
+        <el-backtop target="" :bottom="30" :right="30">
+            <div
+            style="{
+                height: 100%;
+                width: 100%;
+                background-color: #f2f5f6;
+                box-shadow: 0 0 6px rgba(0,0,0, .12);
+                text-align: center;
+                line-height: 40px;
+                color: #1989fa;
+            }"
+            >
+            UP
+            </div>
         </el-backtop>
-</template> -->
-<template>
- <!--  Scroll down to see the bottom-right button. -->
-  <el-backtop target="" :bottom="100">
-    <div
-      style="{
-        height: 100%;
-        width: 100%;
-        background-color: #f2f5f6;
-        box-shadow: 0 0 6px rgba(0,0,0, .12);
-        text-align: center;
-        line-height: 40px;
-        color: #1989fa;
-      }"
-    >
-      UP
     </div>
-  </el-backtop>
 </template>
 
 <script>

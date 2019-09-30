@@ -27,7 +27,7 @@ const store = new Vuex.Store({
 
 Vue.use(ElementUI)
 
-// Vue.config.productionTip = false
+Vue.config.productionTip = false
 
 //API
 Vue.prototype.$get = get
