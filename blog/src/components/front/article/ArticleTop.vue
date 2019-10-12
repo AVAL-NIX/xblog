@@ -2,24 +2,31 @@
     <div class="top">
         <div class="top-div">
             <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-                <el-menu-item index="1"> <router-link :to="{ name: 'Index'}"> 主页</router-link></el-menu-item>
-                 <el-menu-item style="float:right">   <el-button type="primary" @click="onSubmit">搜索</el-button></el-menu-item>
-                 <el-menu-item style="float:right"> <el-input ></el-input> </el-menu-item>
+                <el-menu-item index="1" style="width:100%; text-align:center;"> {{this.title}}</el-menu-item>
             </el-menu>
         </div>
     </div>
 </template>
 
 <script>
+    import {
+        mapGetters,
+        mapState,
+        mapMutations
+    } from 'vuex'
     export default {
         data() {
             return {
                 activeIndex: '1',
             };
         },
+        computed: {
+            ...mapState({
+                title: state => state.article.title
+            })
+        },
         methods: {
             handleSelect(key, keyPath) {
-                console.log(key, keyPath);
             },
             onSubmit(){
 

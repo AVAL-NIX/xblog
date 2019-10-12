@@ -5,8 +5,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'element-ui/lib/theme-chalk/display.css';
 
-import Vuex from 'vuex'
-import article from './store/article.js'
+import store from './store'
 import {
     get,
     post,
@@ -15,15 +14,6 @@ import {
     down,
     put
   } from '@/utils/api'
-
-// Vuex
-Vue.use(Vuex)
-const store = new Vuex.Store({
-    modules: {
-        article
-    }
-})
-
 
 Vue.use(ElementUI)
 
