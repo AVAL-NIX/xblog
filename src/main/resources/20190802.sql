@@ -237,3 +237,6 @@ ALTER TABLE `blog`.`system_setting` ADD COLUMN `update_date` timestamp(0) NOT NU
 ALTER TABLE `blog`.`system_setting` DROP COLUMN `update_time`;
 
 SET FOREIGN_KEY_CHECKS=1;
+
+
+--测试
