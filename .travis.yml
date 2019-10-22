@@ -2,14 +2,11 @@ language: java
 
 jdk:
   - oraclejdk8
-
 cache:
   directories:
     - '$HOME/.m2/repository'
-
 script:
   - mvn clean package -DskipTests=true
-
 after_success:
   - cd ./target
   - git init
@@ -18,11 +15,8 @@ after_success:
   - git add blog-0.0.1-SNAPSHOT.war
   - git commit -m "version public"
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
-
-
 notifications:
   email: false
-
 env:
   global:
     - GH_REF=github.com:AVAL-NIX/Xblog.git
