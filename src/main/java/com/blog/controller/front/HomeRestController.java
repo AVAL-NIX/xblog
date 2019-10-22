@@ -5,21 +5,19 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.blog.common.constants.CacheKey;
 import com.blog.common.utils.CacheUtil;
 import com.blog.controller.base.BaseController;
-import com.blog.model.entity.ArticleDetail;
+import com.blog.model.bean.R;
+import com.blog.model.entity.Channel;
 import com.blog.model.entity.Label;
 import com.blog.model.vo.ArticleVO;
-import com.blog.model.bean.R;
 import com.blog.service.ArticleDetailService;
 import com.blog.service.ArticleService;
+import com.blog.service.ChannelService;
 import com.blog.service.LabelService;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.json.JSONArray;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Arrays;
@@ -32,16 +30,18 @@ import java.util.stream.Collectors;
  * @author avalon
  * @date 2019/4/19
  */
-@RequestMapping(value = "/home")
-@Controller
+@RequestMapping(value = "/home/article")
+@RestController
 @Slf4j
-public class HomeController extends BaseController {
+public class HomeRestController extends BaseController {
 
     @Autowired
     private ArticleService articleService;
     @Autowired
     private LabelService labelService;
 
+    @Autowired
+    private ChannelService channelService;
     @Autowired
     protected ArticleDetailService articleDetailService;
 
@@ -50,56 +50,16 @@ public class HomeController extends BaseController {
      *
      * @return
      */
-    @RequestMapping(value = "/")
-    public ModelAndView homePre(@RequestParam(defaultValue = "1") int page,
-                                @RequestParam(defaultValue = "10") int size, @RequestParam(value = "title", defaultValue = "") String title, @RequestParam(value="labels",defaultValue = "") String labels) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("front/home/home");
+    @GetMapping
+    public R homePre(@RequestParam(defaultValue = "1") int page,
+                     @RequestParam(defaultValue = "10") int size, @RequestParam(value = "title", defaultValue = "") String title, @RequestParam(value = "labels", defaultValue = "") String labels) {
         ArticleVO articleVO = new ArticleVO();
         articleVO.setTitle(title);
         articleVO.setLabels(labels);
         articleVO.setSort(" a.update_date desc ");
-
         Page<ArticleVO> pages =
                 articleService.pageFrontArticleVO(new Page<ArticleVO>(page, size), articleVO);
-
-        modelAndView.addObject("pages", R.page2(pages));
-        //条件
-        modelAndView.addObject("title",title);
-        modelAndView.addObject("labels",labels);
-        return modelAndView;
-    }
-
-    /**
-     * 翻页请求文章(ajax请求用. 已经作废)
-     *
-     * @param page
-     * @param size
-     * @param title
-     * @return
-     */
-    @Deprecated
-    @RequestMapping("/article")
-    public ModelAndView pageArticle(@RequestParam(defaultValue = "1") int page,
-        @RequestParam(defaultValue = "10") int size, @RequestParam(value = "title", defaultValue = "") String title, @RequestParam(value="labels",defaultValue = "") String labels) {
-        ArticleVO articleVO = new ArticleVO();
-        articleVO.setTitle(title);
-        articleVO.setLabels(labels);
-        articleVO.setSort(" ad.view_count desc ");
-        Page<ArticleVO> pages =
-            articleService.pageFrontArticleVO(new Page<ArticleVO>(page, size), articleVO);
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("front/home/article");
-        modelAndView.addObject("pages", R.page2(pages));
-        modelAndView.addObject("currPage", page);
-        //添加浏览记录
-        List<Long> articleIds = pages.getRecords().stream().map(ArticleVO::getId).collect(Collectors.toList());
-        articleDetailService.updateViewCount(articleIds);
-        //条件
-        modelAndView.addObject("title",title);
-        modelAndView.addObject("labels",labels);
-
-        return modelAndView;
+        return R.page2(pages);
     }
 
     /**
@@ -107,17 +67,12 @@ public class HomeController extends BaseController {
      *
      * @return
      */
-    @RequestMapping("/isView")
-    public ModelAndView isView() {
+    @GetMapping("/isView")
+    public R isView() {
         ArticleVO articleVO = new ArticleVO();
         articleVO.setSort(" ad.view_count desc ");
-        IPage<ArticleVO> pages = articleService.pageFrontArticleVO(new Page<ArticleVO>(1, 5), articleVO);
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("front/home/isView");
-        modelAndView.addObject("pages", R.page(pages));
-        modelAndView.addObject("one", pages.getRecords().size() == 0 ? null : pages.getRecords().get(0));
-
-        return modelAndView;
+        Page<ArticleVO> pages = articleService.pageFrontArticleVO(new Page<ArticleVO>(1, 5), articleVO);
+        return R.page2(pages);
     }
 
     /**
@@ -125,50 +80,50 @@ public class HomeController extends BaseController {
      *
      * @return
      */
-    @RequestMapping("/isUp")
-    public ModelAndView isUp() {
+    @GetMapping("/isUp")
+    public R isUp() {
         ArticleVO articleVO = new ArticleVO();
         articleVO.setSort("  ad.up_count desc ");
-        IPage<ArticleVO> pages = articleService.pageFrontArticleVO(new Page<ArticleVO>(1, 5), articleVO);
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("front/home/isUp");
-        modelAndView.addObject("pages", R.page(pages));
-        modelAndView.addObject("one", pages.getRecords().size() == 0 ? null : pages.getRecords().get(0));
-
-        return modelAndView;
+        Page<ArticleVO> pages = articleService.pageFrontArticleVO(new Page<ArticleVO>(1, 5), articleVO);
+        return R.page2(pages);
     }
 
     /**
-     * 标签云
+     * 标签云(详细描述)
      *
      * @param page
      * @param size
      * @return
      */
-    @RequestMapping("/labels")
-    public ModelAndView pageLabels(@RequestParam(defaultValue = "1") int page,
-        @RequestParam(defaultValue = "10") int size) {
+    @GetMapping("/labels")
+    public R pageLabels() {
 
         Object labelsObj = cacheUtil.get(CacheUtil.TWENTYFOUR_HOURS, CacheKey.CACHE_LABELS_KEY);
         List<Label> list = null;
 
-        if(labelsObj == null || StringUtils.isBlank(labelsObj.toString())){
+        if (labelsObj == null || StringUtils.isBlank(labelsObj.toString())) {
             list = labelService.list();
-//            for (Label label : list) {
-//                QueryWrapper<Article> queryWrapper = new QueryWrapper<>();
-//                queryWrapper.lambda().like(Article::getLabels, label.getName());
-//                int count = articleService.count(queryWrapper);
-//                label.setName(label.getName()+"("+count+")");
-//            }
             cacheUtil.set(CacheUtil.TWENTYFOUR_HOURS, CacheKey.CACHE_LABELS_KEY, JSONArray.fromObject(list).toString());
-        }else{
+        } else {
             list = JSONArray.fromObject(labelsObj);
         }
 
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("front/home/labels");
-        modelAndView.addObject("labels", list);
-        return modelAndView;
+        return R.okT(list);
+    }
+
+
+
+    /**
+     * 标签云(大类型)
+     *
+     * @param page
+     * @param size
+     * @return
+     */
+    @GetMapping("/channels")
+    public R channels() {
+
+        return R.okT(channelService.list());
     }
 
 
@@ -177,13 +132,10 @@ public class HomeController extends BaseController {
      *
      * @return
      */
-    @RequestMapping("/time")
-    public ModelAndView time(){
-        ModelAndView modelAndView = new ModelAndView();
-        IPage<ArticleVO> pages = articleService.pageFrontArticleVO(new Page<ArticleVO>(1, 99), null);
-        modelAndView.setViewName("front/home/time");
-        modelAndView.addObject("pages", R.page(pages));
-        return modelAndView;
+    @GetMapping("/time")
+    public R time() {
+        Page<ArticleVO> pages = articleService.pageFrontArticleVO(new Page<ArticleVO>(1, 99), null);
+        return R.page2(pages);
     }
 
 
@@ -193,15 +145,11 @@ public class HomeController extends BaseController {
      * @param id
      * @return
      */
-    @RequestMapping("/detail")
-    public ModelAndView detail(@RequestParam(defaultValue = "0") Long id){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("article", articleService.findById(id));
-        modelAndView.setViewName("front/home/detail");
-
+    @GetMapping("/{id}")
+    public R detail(@PathVariable Long id) {
         //添加浏览记录
         articleDetailService.updateViewCount(Arrays.asList(id));
-        return modelAndView;
+        return R.okT(articleService.findById(id));
     }
 
 
@@ -211,8 +159,8 @@ public class HomeController extends BaseController {
      * @param id
      * @return
      */
-    @RequestMapping("/upCount")
-    public @ResponseBody R upCount(@RequestParam(value = "id",defaultValue = "0") Long id){
+    @PostMapping("/{id}")
+    public R upCount(@PathVariable(value = "id") Long id) {
         //添加点赞记录
         return articleDetailService.updateUpCount(Arrays.asList(id));
     }
