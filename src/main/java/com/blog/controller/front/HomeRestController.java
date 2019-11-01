@@ -1,11 +1,13 @@
 package com.blog.controller.front;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.blog.common.constants.CacheKey;
 import com.blog.common.utils.CacheUtil;
 import com.blog.controller.base.BaseController;
 import com.blog.model.bean.R;
+import com.blog.model.entity.Article;
 import com.blog.model.entity.Channel;
 import com.blog.model.entity.Label;
 import com.blog.model.vo.ArticleVO;
@@ -112,7 +114,6 @@ public class HomeRestController extends BaseController {
     }
 
 
-
     /**
      * 标签云(大类型)
      *
@@ -133,8 +134,9 @@ public class HomeRestController extends BaseController {
      * @return
      */
     @GetMapping("/time")
-    public R time() {
-        Page<ArticleVO> pages = articleService.pageFrontArticleVO(new Page<ArticleVO>(1, 99), null);
+    public R time(@RequestParam(defaultValue = "1") int page,
+                  @RequestParam(defaultValue = "13") int size) {
+        Page<ArticleVO> pages = articleService.pageFrontArticleVO(new Page<ArticleVO>(page, size), null);
         return R.page2(pages);
     }
 
@@ -163,5 +165,17 @@ public class HomeRestController extends BaseController {
     public R upCount(@PathVariable(value = "id") Long id) {
         //添加点赞记录
         return articleDetailService.updateUpCount(Arrays.asList(id));
+    }
+
+
+    /**
+     * 获取所有的文章标题
+     *
+     * @return
+     */
+    @GetMapping("/titles")
+    public R titles(){
+
+        return R.okT(articleService.list().stream().map(Article::getTitle).collect(Collectors.toList()));
     }
 }

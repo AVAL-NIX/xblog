@@ -8,6 +8,7 @@ import com.blog.common.utils.StrUtil;
 import com.blog.model.converter.ArticleConverter;
 import com.blog.model.entity.Article;
 import com.blog.mapper.ArticleMapper;
+import com.blog.model.entity.ArticleDetail;
 import com.blog.model.entity.ArticleLabel;
 import com.blog.model.form.ArticleForm;
 import com.blog.model.dto.ArticleDTO;
@@ -93,10 +94,23 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
             return R.error();
         }
+        //添加
         r = articleLabelService.saveByTagsAndArticleId(tagIds, article.getId());
         if (r.getCode() < 1) {
 
             return r;
+        }
+        //检查有没有文章详细
+        QueryWrapper<ArticleDetail> articleDetailQueryWrapper = new QueryWrapper<>();
+        articleDetailQueryWrapper.lambda().eq(ArticleDetail::getArticleId, article.getId());
+        ArticleDetail articleDetail = articleDetailService.getOne(articleDetailQueryWrapper);
+        if(articleDetail == null){
+            // 新增文章详细
+            r = articleDetailService.save(article.getId());
+            if (!r.isOk()) {
+
+                return R.error("新增文章详细失败!");
+            }
         }
 
         return R.ok("更新文章成功!", article.getSubmitToken());
