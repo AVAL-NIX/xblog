@@ -16,7 +16,7 @@ spring:
     url: jdbc:mysql://localhost/blog?characterEncoding=utf-8&useSSL=false&autoReconnect=true
     type: com.alibaba.druid.pool.DruidDataSource
     filters: stat
-    maxActive: 20
+    maxActive: 50
     initialSize: 1
     maxWait: 60000
     minIdle: 1
@@ -27,7 +27,7 @@ spring:
     testOnBorrow: false
     testOnReturn: false
     poolPreparedStatements: true
-    maxOpenPreparedStatements: 20
+    maxOpenPreparedStatements: 50
 
 
 # 自己的配置项
