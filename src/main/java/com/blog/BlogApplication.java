@@ -13,7 +13,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-@MapperScan({"com.blog.mapper","com.blog.job.mapper"})
+@MapperScan({"com.blog.mapper"})
 @EnableCaching
 public class BlogApplication extends SpringBootServletInitializer {
 

@@ -93,8 +93,6 @@ public class HomeRestController extends BaseController {
     /**
      * 标签云(详细描述)
      *
-     * @param page
-     * @param size
      * @return
      */
     @GetMapping("/labels")
@@ -117,8 +115,6 @@ public class HomeRestController extends BaseController {
     /**
      * 标签云(大类型)
      *
-     * @param page
-     * @param size
      * @return
      */
     @GetMapping("/channels")
@@ -175,7 +171,6 @@ public class HomeRestController extends BaseController {
      */
     @GetMapping("/titles")
     public R titles(){
-
         return R.okT(articleService.list().stream().map(Article::getTitle).collect(Collectors.toList()));
     }
 }
