@@ -148,6 +148,7 @@
             <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
 
+
         <!--rapid-framework 模板继承框架-->
         <dependency>
             <groupId>com.googlecode.rapid-framework</groupId>
@@ -161,6 +162,8 @@
             <artifactId>commons-lang</artifactId>
             <version>2.6</version>
         </dependency>
+
+
 
         <!-- 缓存 https://mvnrepository.com/artifact/net.sf.ehcache/ehcache -->
         <dependency>

@@ -20,7 +20,7 @@ import java.util.List;
 public class CodeGenerator {
 
 //    public static String[] include = {"article", "article_label", "label", "permission", "role","role_permission","admin_role","system_setting","visitor"};
-    public static String[] include = {"role_type"};
+    public static String[] include = {"visitor"};
 
 
 
@@ -50,7 +50,7 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://192.168.7.8:3306/blog?useUnicode=true&useSSL=false&characterEncoding=utf8");
+        dsc.setUrl("jdbc:mysql://localhost:3306/blog?useUnicode=true&useSSL=false&characterEncoding=utf8");
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
