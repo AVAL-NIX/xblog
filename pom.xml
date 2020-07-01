@@ -23,7 +23,7 @@
         <ehcache.version>2.10.6</ehcache.version>
         <druid.version>1.1.10</druid.version>
         <qcloud.cos.version>4.4</qcloud.cos.version>
-        <quartz.version>2.3.0</quartz.version>
+        <quartz.version>2.3.2</quartz.version>
     </properties>
 
     <dependencies>
