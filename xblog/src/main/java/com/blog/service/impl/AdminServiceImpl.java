@@ -23,8 +23,10 @@ public class AdminServiceImpl implements AdminService {
     public R extis(String submitToken) {
         Admin admin = adminDao.findBySubmitToken(submitToken);
         if (admin == null) {
-            return R.error();
+
+            return R.error("用户不存在");
         }
+        
         return R.data(admin);
     }
 }
