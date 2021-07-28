@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "nprogress": "^0.2.0",
     "vant": "^2.12.25",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
