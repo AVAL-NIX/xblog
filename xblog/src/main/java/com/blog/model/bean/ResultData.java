@@ -16,7 +16,7 @@ public class ResultData<T> {
     /**
      * 处理码
      */
-    private int code = -1;
+    private int code = 404;
 
     /**
      * 消息
@@ -39,7 +39,7 @@ public class ResultData<T> {
      * @return
      */
     public static ResultData error() {
-        return error(-500, "未知异常，请联系管理员");
+        return error(404, "未知异常，请联系管理员");
     }
 
     /**
@@ -49,7 +49,7 @@ public class ResultData<T> {
      * @return
      */
     public static ResultData error(String msg) {
-        return error(-1, msg);
+        return error(404, msg);
     }
 
     /**
@@ -76,7 +76,7 @@ public class ResultData<T> {
      */
     public static <T> ResultData<T> error(String msg, T data) {
         ResultData r = new ResultData();
-        r.setCode(-1);
+        r.setCode(404);
         r.setMsg(msg);
         return r;
     }
@@ -90,7 +90,7 @@ public class ResultData<T> {
      */
     public static <T> ResultData<T> ok(String msg) {
         ResultData r = new ResultData();
-        r.setCode(1);
+        r.setCode(200);
         r.setMsg(msg);
         return r;
     }
@@ -104,7 +104,7 @@ public class ResultData<T> {
      */
     public static <T> ResultData<T> data(T data) {
         ResultData r = new ResultData();
-        r.setCode(1);
+        r.setCode(200);
         r.setData(data);
         return r;
     }
@@ -119,7 +119,7 @@ public class ResultData<T> {
      */
     public static <T> ResultData<T> ok(String msg, T data) {
         ResultData r = new ResultData();
-        r.setCode(1);
+        r.setCode(200);
         r.setMsg(msg);
         r.setData(data);
         return r;

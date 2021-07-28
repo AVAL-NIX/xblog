@@ -50,12 +50,12 @@ public class AdminServiceImpl implements AdminService {
         // 校验密码
         Admin admin1 = adminDao.findByUsername(admin.getUsername());
         if (admin1 == null) {
-            new ResultException(" 用户不存在！");
+            throw new ResultException(" 用户不存在！");
         }
         if (!admin1.getPassword().equals(EncryptUtil.getInstance().MD5(admin.getPassword(), AppConstants.PASS_WORD_SALT))) {
-            new ResultException(" 密码不正确！");
+            throw new ResultException(" 密码不正确！");
         }
 
-        return ResultData.data(JWTUtils.getToken(admin));
+        return ResultData.data(JWTUtils.getToken(admin1));
     }
 }

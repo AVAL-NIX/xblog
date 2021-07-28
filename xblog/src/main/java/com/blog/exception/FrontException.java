@@ -16,15 +16,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ControllerAdvice(basePackages = "com.blog.controller.front")
 public class FrontException {
 
-    @ExceptionHandler(ResultException.class)
-    public @ResponseBody
-    ResultData handleShiroException(ResultException ex) {
-        return ResultData.error(ex.getMsg());
-    }
-
     @ExceptionHandler(Exception.class)
     public @ResponseBody
     ResultData exception(Exception ex) {
+        if (ex instanceof ResultException) {
+            return ResultData.error(((ResultException) ex).getMsg());
+        }
         return ResultData.error(ex.getMessage());
     }
 }

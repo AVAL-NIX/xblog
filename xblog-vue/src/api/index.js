@@ -7,11 +7,6 @@
  *
  * 使用方法 ： this.$api.track.save().then().catch()
 
-			this.$api.track.list().then(res=>{
-				console.log("res then",res)
-			}).catch(res=>{
-			   console.log("res catch",res)
-			})
  * @author zhengxin
  * @date 2020/11/26
  */
