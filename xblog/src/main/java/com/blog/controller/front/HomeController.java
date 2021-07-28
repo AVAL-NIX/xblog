@@ -1,7 +1,7 @@
 package com.blog.controller.front;
 
 import com.blog.controller.common.BaseController;
-import com.blog.model.bean.R;
+import com.blog.model.bean.ResultData;
 import com.blog.model.dto.request.ArticleDTO;
 import com.blog.model.entity.Article;
 import com.blog.service.ArticleDetailService;
@@ -47,10 +47,10 @@ public class HomeController extends BaseController {
      * @return
      */
     @GetMapping
-    public R homePre(@RequestParam(defaultValue = "1") int page,
-                     @RequestParam(defaultValue = "10") int size, ArticleDTO articleDTO) {
+    public ResultData homePre(@RequestParam(defaultValue = "1") int page,
+                              @RequestParam(defaultValue = "10") int size, ArticleDTO articleDTO) {
         PageRequest pageRequest = PageRequest.of(page, size);
-        R r = articleService.page(pageRequest, articleDTO);
+        ResultData r = articleService.page(pageRequest, articleDTO);
         return r;
     }
 
@@ -60,7 +60,7 @@ public class HomeController extends BaseController {
      * @return
      */
     @GetMapping("/labels")
-    public R pageLabels() {
+    public ResultData pageLabels() {
 
         return labelService.list();
     }
@@ -72,7 +72,7 @@ public class HomeController extends BaseController {
      * @return
      */
     @GetMapping("/channels")
-    public R channels() {
+    public ResultData channels() {
 
         return channelService.list();
     }
@@ -84,8 +84,8 @@ public class HomeController extends BaseController {
      * @return
      */
     @GetMapping("/time")
-    public R time(@RequestParam(defaultValue = "1") int page,
-                  @RequestParam(defaultValue = "13") int size) {
+    public ResultData time(@RequestParam(defaultValue = "1") int page,
+                           @RequestParam(defaultValue = "13") int size) {
 
         return articleService.page(PageRequest.of(page, size), null);
     }
@@ -98,10 +98,10 @@ public class HomeController extends BaseController {
      * @return
      */
     @GetMapping("/{id}")
-    public R detail(@PathVariable Long id) {
+    public ResultData detail(@PathVariable Long id) {
         //添加浏览记录
         articleDetailService.updateViewCount(Arrays.asList(id));
-        return R.data(articleService.findById(id));
+        return ResultData.data(articleService.findById(id));
     }
 
 
@@ -112,7 +112,7 @@ public class HomeController extends BaseController {
      * @return
      */
     @PostMapping("/{id}")
-    public R upCount(@PathVariable(value = "id") Long id) {
+    public ResultData upCount(@PathVariable(value = "id") Long id) {
         //添加点赞记录
         return articleDetailService.updateUpCount(Arrays.asList(id));
     }
@@ -124,14 +124,14 @@ public class HomeController extends BaseController {
      * @return
      */
     @GetMapping("/titles")
-    public R titles() {
-        R<List<Article>> r = articleService.list();
+    public ResultData titles() {
+        ResultData<List<Article>> r = articleService.list();
 
         if (r.isOk()) {
-            return R.data(r.getData().stream().map(Article::getTitle).collect(Collectors.toList()));
+            return ResultData.data(r.getData().stream().map(Article::getTitle).collect(Collectors.toList()));
         }
 
-        return R.ok();
+        return ResultData.ok();
     }
 
 
@@ -152,7 +152,7 @@ public class HomeController extends BaseController {
 
 
     @GetMapping("/curr")
-    public R currUser() {
-        return R.data(currUser);
+    public ResultData currUser() {
+        return ResultData.data(currUser);
     }
 }

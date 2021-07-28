@@ -1,7 +1,7 @@
 package com.blog.service.impl;
 
 import com.blog.dao.ChannelDao;
-import com.blog.model.bean.R;
+import com.blog.model.bean.ResultData;
 import com.blog.model.entity.Channel;
 import com.blog.service.ChannelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,22 +21,22 @@ public class ChannelServiceImpl implements ChannelService {
     ChannelDao channelDao;
 
     @Override
-    public R saveByName(String name) {
+    public ResultData saveByName(String name) {
         Channel channel = channelDao.findByName(name);
         if (channel == null) {
             channel = new Channel();
             channel.setName(name);
             channel = channelDao.save(channel);
             if (channel == null) {
-                return R.error();
+                return ResultData.error();
             }
         }
-        return R.data(channel.getId());
+        return ResultData.data(channel.getId());
     }
 
 
     @Override
-    public R list() {
-        return R.data(channelDao.findAll());
+    public ResultData list() {
+        return ResultData.data(channelDao.findAll());
     }
 }

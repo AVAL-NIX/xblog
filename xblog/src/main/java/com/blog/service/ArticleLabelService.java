@@ -1,6 +1,6 @@
 package com.blog.service;
 
-import com.blog.model.bean.R;
+import com.blog.model.bean.ResultData;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface ArticleLabelService {
 
-    R deleteByArticleId(Long id);
+    ResultData deleteByArticleId(Long id);
 
-    R saveByTagsAndArticleId(List<Long> tagIds, long articleId);
+    ResultData saveByTagsAndArticleId(List<Long> tagIds, long articleId);
 }

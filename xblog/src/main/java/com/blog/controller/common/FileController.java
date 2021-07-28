@@ -2,7 +2,7 @@ package com.blog.controller.common;
 
 import com.blog.common.constants.AppConstants;
 import com.blog.common.utils.WebUtils;
-import com.blog.model.bean.R;
+import com.blog.model.bean.ResultData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,16 +25,16 @@ import java.util.UUID;
 public class FileController extends BaseController {
 
     @RequestMapping("/upload")
-    public R upload(@RequestParam("multipartFile") MultipartFile multipartFile) {
+    public ResultData upload(@RequestParam("multipartFile") MultipartFile multipartFile) {
         // 权限验证
-        R r = getAdminByAccessToken();
+        ResultData r = getAdminByAccessToken();
         if (!r.isOk()) {
 
             return r;
         }
         if (multipartFile.isEmpty()) {
 
-            return R.error("上传失败");
+            return ResultData.error("上传失败");
         }
         String fileName = UUID.randomUUID().toString();
         String filePath = WebUtils.getProjectUrl() + AppConstants.UPLOAD_PATH;
@@ -48,11 +48,11 @@ public class FileController extends BaseController {
             multipartFile.transferTo(dest);
             log.info("上传成功! " + fileName);
 
-            return R.ok(WebUtils.getBaseUrl() + AppConstants.UPLOAD_PATH + fileName);
+            return ResultData.ok(WebUtils.getBaseUrl() + AppConstants.UPLOAD_PATH + fileName);
         } catch (IOException e) {
             log.error("上传异常!", e);
         }
-        return R.error("上传失败");
+        return ResultData.error("上传失败");
     }
 
 }

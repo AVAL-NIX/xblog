@@ -1,7 +1,7 @@
 package com.blog.service.impl;
 
 import com.blog.dao.LabelDao;
-import com.blog.model.bean.R;
+import com.blog.model.bean.ResultData;
 import com.blog.model.entity.Label;
 import com.blog.service.ArticleLabelService;
 import com.blog.service.LabelService;
@@ -31,7 +31,7 @@ public class LabelServiceImpl implements LabelService {
 
 
     @Override
-    public R<List<Long>> saveByName(Long channelId, String names) {
+    public ResultData<List<Long>> saveByName(Long channelId, String names) {
         boolean flag = false;
         String[] tags = names.split(",");
         List<Long> tagIds = new ArrayList<>();
@@ -43,7 +43,7 @@ public class LabelServiceImpl implements LabelService {
                 label.setChannelId(channelId);
                 label = labelDao.save(label);
                 if (label == null) {
-                    return R.error();
+                    return ResultData.error();
                 }
                 tagIds.add(label.getId());
             } else {
@@ -51,16 +51,16 @@ public class LabelServiceImpl implements LabelService {
                 label.setUpdateDate(LocalDateTime.now());
                 label = labelDao.save(label);
                 if (label == null) {
-                    return R.error();
+                    return ResultData.error();
                 }
                 tagIds.add(label.getId());
             }
         }
-        return R.data(tagIds);
+        return ResultData.data(tagIds);
     }
 
     @Override
-    public R list() {
-        return R.data(labelDao.findAll());
+    public ResultData list() {
+        return ResultData.data(labelDao.findAll());
     }
 }

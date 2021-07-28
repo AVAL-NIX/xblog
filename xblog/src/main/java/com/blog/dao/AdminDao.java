@@ -9,4 +9,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface AdminDao extends JpaRepository<Admin, Long> {
 
     Admin findBySubmitToken(String submitToken);
+
+    Admin findByUsername(String username);
 }

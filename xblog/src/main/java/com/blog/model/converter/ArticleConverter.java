@@ -24,7 +24,7 @@ public class ArticleConverter {
         return article;
     }
 
-    public static ArticleDTO objTodto(Article article) {
+    public static ArticleDTO objToDto(Article article) {
         ArticleDTO articleDTO = new ArticleDTO();
         BeanUtils.copyProperties(article, articleDTO);
         return articleDTO;

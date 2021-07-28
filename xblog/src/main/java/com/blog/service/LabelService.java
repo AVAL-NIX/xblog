@@ -1,6 +1,6 @@
 package com.blog.service;
 
-import com.blog.model.bean.R;
+import com.blog.model.bean.ResultData;
 
 /**
  * <p>
@@ -20,7 +20,7 @@ public interface LabelService {
      * @param tags
      * @return List<Long>
      */
-    R saveByName(Long channelId, String tags);
+    ResultData saveByName(Long channelId, String tags);
 
-    R list();
+    ResultData list();
 }

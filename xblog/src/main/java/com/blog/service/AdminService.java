@@ -1,6 +1,7 @@
 package com.blog.service;
 
-import com.blog.model.bean.R;
+import com.blog.model.bean.ResultData;
+import com.blog.model.entity.Admin;
 import com.blog.service.impl.AdminServiceImpl;
 
 /**
@@ -13,5 +14,11 @@ import com.blog.service.impl.AdminServiceImpl;
 public interface AdminService {
 
 
-    R extis(String submitToken);
+    ResultData extis(String submitToken);
+
+    ResultData findById(Long id);
+
+    ResultData findByName(String username);
+
+    ResultData login(Admin admin);
 }

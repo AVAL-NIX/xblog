@@ -1,6 +1,6 @@
 package com.blog.service;
 
-import com.blog.model.bean.R;
+import com.blog.model.bean.ResultData;
 import com.blog.model.dto.request.ArticleDTO;
 import org.springframework.data.domain.PageRequest;
 
@@ -14,17 +14,17 @@ import org.springframework.data.domain.PageRequest;
  */
 public interface ArticleService {
 
-    R updateById(ArticleDTO articleDTO);
+    ResultData updateById(ArticleDTO articleDTO);
 
-    R updateBySign(ArticleDTO articleDTO);
+    ResultData updateBySign(ArticleDTO articleDTO);
 
-    R save(ArticleDTO articleDTO);
+    ResultData save(ArticleDTO articleDTO);
 
-    R page(PageRequest page, ArticleDTO articleDTO);
+    ResultData page(PageRequest page, ArticleDTO articleDTO);
 
-    R findById(Long id);
+    ResultData findById(Long id);
 
-    R list();
+    ResultData list();
 
-    R findBySubmitToken(String submitToken);
+    ResultData findBySubmitToken(String submitToken);
 }

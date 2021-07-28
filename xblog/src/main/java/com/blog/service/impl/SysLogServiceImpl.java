@@ -1,7 +1,7 @@
 package com.blog.service.impl;
 
 import com.blog.dao.SysLogDao;
-import com.blog.model.bean.R;
+import com.blog.model.bean.ResultData;
 import com.blog.model.entity.SysLog;
 import com.blog.service.SysLogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class SysLogServiceImpl implements SysLogService {
     SysLogDao sysLogDao;
 
     @Override
-    public R save(SysLog sysLog) {
-        return R.data(sysLogDao.save(sysLog));
+    public ResultData save(SysLog sysLog) {
+        return ResultData.data(sysLogDao.save(sysLog));
     }
 }

@@ -2,7 +2,7 @@ package com.blog.controller.common;
 
 import com.blog.common.utils.CacheUtils;
 import com.blog.common.utils.WebUtils;
-import com.blog.model.bean.R;
+import com.blog.model.bean.ResultData;
 import com.blog.model.entity.Admin;
 import com.blog.service.AdminService;
 import lombok.extern.slf4j.Slf4j;
@@ -45,7 +45,7 @@ public class BaseController {
      *
      * @return
      */
-    public R<Admin> getAdminByAccessToken() {
+    public ResultData<Admin> getAdminByAccessToken() {
         HttpServletRequest request = WebUtils.getRequest();
         String accessToken = request.getHeader("accessToken");
         return adminService.extis(accessToken);

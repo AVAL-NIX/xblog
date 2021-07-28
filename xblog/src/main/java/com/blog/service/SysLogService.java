@@ -1,6 +1,6 @@
 package com.blog.service;
 
-import com.blog.model.bean.R;
+import com.blog.model.bean.ResultData;
 import com.blog.model.entity.SysLog;
 
 /**
@@ -13,5 +13,5 @@ import com.blog.model.entity.SysLog;
  */
 public interface SysLogService {
 
-    R save(SysLog sysLog);
+    ResultData save(SysLog sysLog);
 }

@@ -1,6 +1,6 @@
 package com.blog.service;
 
-import com.blog.model.bean.R;
+import com.blog.model.bean.ResultData;
 
 /**
  * <p>
@@ -19,7 +19,7 @@ public interface ChannelService {
      * @param name
      * @return
      */
-    public R saveByName(String name);
+    public ResultData saveByName(String name);
 
-    R list();
+    ResultData list();
 }

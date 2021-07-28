@@ -1,8 +1,9 @@
 package com.blog.controller.front;
 
-import com.blog.common.annotation.SysLog;
 import com.blog.controller.common.BaseController;
-import com.blog.model.bean.R;
+import com.blog.model.annotation.PassToken;
+import com.blog.model.annotation.SysLog;
+import com.blog.model.bean.ResultData;
 import com.blog.model.converter.ArticleConverter;
 import com.blog.model.dto.request.ArticleDTO;
 import com.blog.model.entity.Admin;
@@ -46,9 +47,10 @@ public class ArticleController extends BaseController {
      */
     @PostMapping(value = "/public")
     @SysLog("添加文章数据")
-    public R addArticle(ArticleDTO articleDTO) {
+    @PassToken
+    public ResultData addArticle(ArticleDTO articleDTO) {
         // 获取用户
-        R r = getAdminByAccessToken();
+        ResultData r = getAdminByAccessToken();
         if (!r.isOk()) {
             r.setData(articleDTO);
 
@@ -75,7 +77,7 @@ public class ArticleController extends BaseController {
         }
 
         // 频道,标签不是空
-        R r1 = articleService.findBySubmitToken(articleDTO.getSubmitToken());
+        ResultData r1 = articleService.findBySubmitToken(articleDTO.getSubmitToken());
         if (r1.getData() == null) {
             // 新增文章
             r = articleService.save(articleDTO);
@@ -97,23 +99,24 @@ public class ArticleController extends BaseController {
      */
     @PostMapping(value = "/search")
     @SysLog("搜索文章数据")
-    public R searchArticle(ArticleDTO articleDTO) {
+    @PassToken
+    public ResultData searchArticle(ArticleDTO articleDTO) {
         // 获取用户
-        R r = getAdminByAccessToken();
+        ResultData r = getAdminByAccessToken();
         if (!r.isOk()) {
             r.setData(articleDTO);
 
             return r;
         }
 
-        R<List<Article>> r2 = articleService.page(PageRequest.of(1, 10), articleDTO);
+        ResultData<List<Article>> r2 = articleService.page(PageRequest.of(1, 10), articleDTO);
         List<ArticleDTO> articleVOList = new ArrayList<>();
         if (r2.getData().size() > 0) {
             for (Article article : r2.getData()) {
-                articleVOList.add(ArticleConverter.objTodto(article));
+                articleVOList.add(ArticleConverter.objToDto(article));
             }
         }
-        return R.ok("查询成功!", articleVOList);
+        return ResultData.ok("查询成功!", articleVOList);
     }
 
 
