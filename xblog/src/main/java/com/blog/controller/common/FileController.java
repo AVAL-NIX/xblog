@@ -1,8 +1,10 @@
 package com.blog.controller.common;
 
 import com.blog.common.constants.AppConstants;
+import com.blog.common.utils.QiNiuApiUtil;
 import com.blog.common.utils.WebUtils;
 import com.blog.model.bean.ResultData;
+import com.qiniu.http.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,13 +44,22 @@ public class FileController extends BaseController {
         if (!fileDir.exists()) {
             fileDir.mkdir();
         }
-        File dest = new File(filePath + fileName);
+       // File dest = new File(filePath + fileName);
         try {
-            //TODO 这里要上传到 7 牛云
-            multipartFile.transferTo(dest);
-            log.info("上传成功! " + fileName);
+            //上传到7牛云 filename 用于访问要用到最好保存  Response 还有其他数据可输出
+            Response rs = QiNiuApiUtil.uploadFileToQiNiu(multipartFile.getBytes(), fileName);
 
-            return ResultData.ok(WebUtils.getBaseUrl() + AppConstants.UPLOAD_PATH + fileName);
+            if(rs == null){
+                //上传失败
+                ResultData.error("上传失败");
+            }
+
+            if(rs.statusCode == 200) {
+                // fileName 浏览也许需要
+                log.info("上传成功! " + fileName);
+                return ResultData.ok(WebUtils.getBaseUrl() + AppConstants.UPLOAD_PATH + fileName);
+            }
+
         } catch (IOException e) {
             log.error("上传异常!", e);
         }
