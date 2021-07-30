@@ -1,5 +1,10 @@
 <template>
   <div>
+    <van-image
+      width="100"
+      height="100"
+      :src="logo"
+    />
     <van-form @submit="onSubmit">
       <van-field
         v-model="username"
@@ -26,12 +31,13 @@
 import {setToken} from '@/util/auth'
 
 export default {
-  data() {
+  data () {
     return {
       username: null,
       password: null,
       redirect: undefined,
-      otherQuery: {}
+      otherQuery: {},
+      logo: require('../../../static/logo.png')
     }
   },
   watch: {
@@ -44,7 +50,7 @@ export default {
     }
   },
   methods: {
-    onSubmit() {
+    onSubmit () {
       this.$api.admin.login({
         username: this.username,
         password: this.password

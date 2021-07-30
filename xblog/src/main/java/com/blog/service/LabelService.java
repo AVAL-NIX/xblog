@@ -12,15 +12,14 @@ import com.blog.model.bean.ResultData;
  */
 public interface LabelService {
 
-
-    /**
-     * 添加标签
-     *
-     * @param channelId
-     * @param tags
-     * @return List<Long>
-     */
     ResultData saveByName(Long channelId, String tags);
 
     ResultData list();
+
+    /**
+     * 获取所有的 topic 类型
+     *
+     * @return
+     */
+    ResultData listTopicType();
 }
