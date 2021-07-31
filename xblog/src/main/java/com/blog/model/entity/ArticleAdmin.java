@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author zhengxin
@@ -18,21 +18,21 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Data
-public class ArticleUser {
+public class ArticleAdmin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**
-     * 用户ID 
+     * 用户ID
      */
-    private Long userId;
+    private Long adminId;
 
     /**
-     * IP
+     * 所属文章ID
      */
-    private String ip;
+    private Long articleId;
 
     /**
      * 创建时间

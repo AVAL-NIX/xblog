@@ -23,15 +23,16 @@
   </div>
 </template>
 <script>
-import {setToken} from '@/util/auth'
+import {setToken, setUserinfo} from '@/util/auth'
 
 export default {
-  data() {
+  data () {
     return {
       username: null,
       password: null,
       redirect: undefined,
-      otherQuery: {}
+      otherQuery: {},
+      logo: require('../../../static/logo.png')
     }
   },
   watch: {
@@ -44,13 +45,14 @@ export default {
     }
   },
   methods: {
-    onSubmit() {
+    onSubmit () {
       this.$api.admin.login({
         username: this.username,
         password: this.password
       }).then(res => {
-        let token = res.data
-        setToken(token)
+        let user = res.data
+        setToken(user.token)
+        setUserinfo(user)
         this.$router.push({path: this.redirect || '/', query: this.otherQuery})
       })
     }

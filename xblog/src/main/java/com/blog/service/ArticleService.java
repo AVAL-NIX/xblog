@@ -27,4 +27,22 @@ public interface ArticleService {
     ResultData list();
 
     ResultData findBySubmitToken(String submitToken);
+
+    /**
+     * 获取目前有的 topic 数量
+     *
+     * @param userId
+     * @return
+     */
+    ResultData listTopicCount();
+
+    /**
+     * 某个用户获取随机多少道题
+     *
+     * @param count
+     * @return
+     */
+    ResultData getTopicList(int count, String label, Long adminId);
+
+
 }

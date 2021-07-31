@@ -31,7 +31,7 @@ public class LoginController extends BaseController {
 
     @PostMapping("/pwd")
     @PassToken
-    public ResultData login(String password) {
+    public ResultData login(@RequestBody String password) {
         return ResultData.data(EncryptUtil.getInstance().MD5(password, AppConstants.PASS_WORD_SALT));
     }
 

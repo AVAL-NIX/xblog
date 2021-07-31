@@ -1,7 +1,11 @@
 package com.blog.service.impl;
 
+import com.blog.common.constants.CacheKey;
+import com.blog.common.utils.CacheUtils;
+import com.blog.dao.ChannelDao;
 import com.blog.dao.LabelDao;
 import com.blog.model.bean.ResultData;
+import com.blog.model.entity.Channel;
 import com.blog.model.entity.Label;
 import com.blog.service.ArticleLabelService;
 import com.blog.service.LabelService;
@@ -29,6 +33,11 @@ public class LabelServiceImpl implements LabelService {
     @Autowired
     protected LabelDao labelDao;
 
+    @Autowired
+    protected ChannelDao channelDao;
+
+    @Autowired
+    protected CacheUtils cacheUtils;
 
     @Override
     public ResultData<List<Long>> saveByName(Long channelId, String names) {
@@ -62,5 +71,22 @@ public class LabelServiceImpl implements LabelService {
     @Override
     public ResultData list() {
         return ResultData.data(labelDao.findAll());
+    }
+
+
+    @Override
+    public ResultData listTopicType() {
+        Channel channel = channelDao.findByName("topic");
+        if (channel == null) {
+            return ResultData.ok();
+        }
+        Object result = cacheUtils.get(CacheUtils.TWENTYFOUR_HOURS, CacheKey.CACHE_TOPIC_TYPE_COUNT_KEY + channel.getId());
+        if (result != null) {
+            return ResultData.data(result);
+        } else {
+            List<Label> list = labelDao.listTopicType(channel.getId());
+            cacheUtils.set(CacheUtils.TWENTYFOUR_HOURS, CacheKey.CACHE_TOPIC_TYPE_COUNT_KEY + channel.getId(), list);
+            return ResultData.data(list);
+        }
     }
 }

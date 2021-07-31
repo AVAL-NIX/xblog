@@ -1,8 +1,11 @@
 package com.blog.service.impl;
 
+import com.blog.common.constants.CacheKey;
 import com.blog.common.constants.SystemConstants;
+import com.blog.common.utils.CacheUtils;
 import com.blog.common.utils.EncryptUtil;
 import com.blog.common.utils.StrUtil;
+import com.blog.dao.ArticleAdminDao;
 import com.blog.dao.ArticleDao;
 import com.blog.model.bean.ResultData;
 import com.blog.model.converter.ArticleConverter;
@@ -11,13 +14,21 @@ import com.blog.model.entity.Article;
 import com.blog.model.enums.ArticleStatus;
 import com.blog.service.*;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -41,6 +52,13 @@ public class ArticleServiceImpl implements ArticleService {
     protected ArticleDao articleDao;
     @Autowired
     protected ArticleDetailService articleDetailService;
+
+    @Autowired
+    protected ArticleAdminDao articleUserDao;
+
+    @Autowired
+    protected CacheUtils cacheUtils;
+
 
     @Override
     @Transactional
@@ -154,16 +172,74 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public ResultData page(PageRequest page, ArticleDTO article) {
-        Page<Article> all = articleDao.findAll(page);
+        Page<Article> all = articleDao.findAll(
+                new Specification<Article>() {
+                    @Override
+                    public Predicate toPredicate(Root<Article> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                        List<Predicate> predicates = new ArrayList<>();
+                        if (StringUtils.isNotBlank(article.getChannel())) {
+                            Predicate predicate = criteriaBuilder.like(root.get("channel").as(String.class), "%" + article.getChannel() + "%");
+                            predicates.add(predicate);
+                        }
+
+                        if (StringUtils.isNotBlank(article.getTitle())) {
+                            Predicate predicate = criteriaBuilder.like(root.get("title").as(String.class), "%" + article.getTitle() + "%");
+                            predicates.add(predicate);
+                        }
+
+                        return criteriaBuilder.and(predicates.toArray(new Predicate[]{}));
+                    }
+                }, page);
         return ResultData.page(all);
     }
 
 
     @Override
+    public ResultData listTopicCount() {
+        Object result = cacheUtils.get(CacheUtils.TWENTYFOUR_HOURS, CacheKey.CACHE_TOPIC_COUNT_KEY);
+        if (result != null) {
+            return ResultData.data(NumberUtils.toInt(result.toString()));
+        } else {
+            int count = articleDao.countByTopic();
+            cacheUtils.set(CacheUtils.TWENTYFOUR_HOURS, CacheKey.CACHE_TOPIC_COUNT_KEY, count);
+            return ResultData.data(count);
+        }
+    }
+
+    @Override
+    public ResultData getTopicList(int count, String label, Long adminId) {
+        List<Article> data = new ArrayList<>();
+        if (StringUtils.isBlank(label)) {
+            data = articleDao.getTopicList(adminId);
+        } else {
+            data = articleDao.getTopicList(label, adminId);
+        }
+        if (data.size() == 0) {
+            return ResultData.ok();
+        }
+        if (data.size() < count) {
+            return ResultData.data(data);
+        }
+        //进行随机 
+        Article[] numbers = data.stream().toArray(Article[]::new);
+        // 结果集
+        List<Article> result = new ArrayList<>();
+        int n = count;
+        for (int i = 0; i < n; i++) {
+            int r = (int) (Math.random() * (data.size() - i));
+            result.add(numbers[r]);
+            // 排除已经取过的值
+            numbers[r] = numbers[count - 1];
+            count--;
+        }
+
+        return ResultData.data(result);
+    }
+
+    @Override
     public ResultData findById(Long id) {
         return ResultData.data(articleDao.findById(id));
     }
-
 
     @Override
     public ResultData list() {

@@ -1,13 +1,20 @@
 <template>
   <div>
-    user
+     {{admin.username}}
   </div>
 </template>
 <script>
-
+import {getUserinfo} from '@/util/auth'
 export default {
   data () {
-    return {}
+    return {
+      admin: {
+
+      }
+    }
+  },
+  mounted () {
+    this.admin = getUserinfo()
   },
   methods: {}
 }

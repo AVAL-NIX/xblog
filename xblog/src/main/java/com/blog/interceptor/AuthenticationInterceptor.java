@@ -10,6 +10,7 @@ import com.blog.model.bean.ResultData;
 import com.blog.model.entity.Admin;
 import com.blog.service.AdminService;
 import org.apache.commons.lang3.math.NumberUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,6 +21,7 @@ import java.lang.reflect.Method;
 
 public class AuthenticationInterceptor implements HandlerInterceptor {
 
+    @Autowired
     AdminService adminService;
 
     @Override
