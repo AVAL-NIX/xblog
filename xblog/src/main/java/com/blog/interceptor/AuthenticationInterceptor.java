@@ -9,16 +9,22 @@ import com.blog.model.annotation.PassToken;
 import com.blog.model.bean.ResultData;
 import com.blog.model.entity.Admin;
 import com.blog.service.AdminService;
+import lombok.extern.slf4j.Slf4j;
+import net.sf.json.JSONObject;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.lang.reflect.Method;
 
+@Slf4j
 public class AuthenticationInterceptor implements HandlerInterceptor {
 
     @Autowired
@@ -40,30 +46,37 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 return true;
             }
         }
-        // 从 http 请求头中取出 token
-        String token = httpServletRequest.getHeader("login-token");
-        // 执行认证
-        if (token == null) {
-            throw new RuntimeException("无token，请重新登录");
-        }
-        // 获取 token 中的 user id
-        String id;
         try {
-            id = JWT.decode(token).getAudience().get(0);
-        } catch (JWTDecodeException j) {
-            throw new RuntimeException("401");
-        }
-        ResultData<Admin> resultData = adminService.findById(NumberUtils.toLong(id));
-        if (!resultData.isOk()) {
-            throw new RuntimeException("用户不存在，请重新登录");
-        }
-        Admin admin = resultData.getData();
-        // 验证 token
-        JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(admin.getPassword())).build();
-        try {
+            // 从 http 请求头中取出 token
+            String token = httpServletRequest.getHeader("login-token");
+            // 执行认证
+            if (token == null) {
+                responseResult(httpServletResponse, ResultData.error("无token，请重新登录"));
+                return false;
+            }
+            // 获取 token 中的 user id
+            String id = JWT.decode(token).getAudience().get(0);
+            ResultData<Admin> resultData = adminService.findById(NumberUtils.toLong(id));
+            if (!resultData.isOk()) {
+                responseResult(httpServletResponse, ResultData.error("用户不存在，请重新登录"));
+                return false;
+            }
+            Admin admin = resultData.getData();
+            // 验证 token
+            JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(admin.getPassword())).build();
             jwtVerifier.verify(token);
+        } catch (JWTDecodeException e) {
+            log.error(" 异常", e);
+            responseResult(httpServletResponse, ResultData.error("权限验证失败"));
+            return false;
         } catch (JWTVerificationException e) {
-            throw new RuntimeException("401");
+            log.error(" 异常", e);
+            responseResult(httpServletResponse, ResultData.error("权限验证失败"));
+            return false;
+        } catch (Exception e) {
+            log.error(" 异常", e);
+            responseResult(httpServletResponse, ResultData.error("用户登录失败"));
+            return false;
         }
         return true;
     }
@@ -81,4 +94,15 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                                 Object o, Exception e) throws Exception {
     }
 
+
+    private void responseResult(HttpServletResponse response, ResultData result) throws IOException {
+        String temp = JSONObject.fromObject(result).toString();
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
+        response.setStatus(HttpStatus.FORBIDDEN.value());
+        response.getWriter().flush();
+        response.getWriter().write(temp);
+        response.getWriter().close();
+        log.error(temp);
+    }
 }
