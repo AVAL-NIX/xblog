@@ -6,6 +6,8 @@ import com.blog.common.utils.JWTUtils;
 import com.blog.dao.AdminDao;
 import com.blog.exception.ResultException;
 import com.blog.model.bean.ResultData;
+import com.blog.model.converter.AdminConverter;
+import com.blog.model.dto.response.AdminDTO;
 import com.blog.model.entity.Admin;
 import com.blog.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +38,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public ResultData findById(Long id) {
-        return ResultData.data(adminDao.findById(id));
+        return ResultData.data(adminDao.findById(id).get());
     }
 
 
@@ -55,7 +57,8 @@ public class AdminServiceImpl implements AdminService {
         if (!admin1.getPassword().equals(EncryptUtil.getInstance().MD5(admin.getPassword(), AppConstants.PASS_WORD_SALT))) {
             throw new ResultException(" 密码不正确！");
         }
-
-        return ResultData.data(JWTUtils.getToken(admin1));
+        AdminDTO result = AdminConverter.objToDTO(admin1);
+        result.setToken(JWTUtils.getToken(admin1));
+        return ResultData.data(result);
     }
 }

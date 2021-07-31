@@ -18,7 +18,9 @@ public interface ArticleDao extends JpaRepository<Article, Long>, JpaSpecificati
     int countByTopic();
 
 
-    @Query(nativeQuery = true, value = " select * from article a where a.lable like ?2 and  a.id not in (select b.article_id from article_admin b  where b.admin_id = ?3)  limit ?1 ")
-    List<Article> getTopicList(int count, String label, Long adminId);
+    @Query(nativeQuery = true, value = " select * from article a where a.labels like ?1  and a.channel = 'topic'  and   a.id not in (select b.article_id from article_admin b  where b.admin_id = ?2) ")
+    List<Article> getTopicList(String label, Long adminId);
 
+    @Query(nativeQuery = true, value = " select * from article a where a.channel = 'topic'  and   a.id not in (select b.article_id from article_admin b  where b.admin_id = ?1)  ")
+    List<Article> getTopicList(Long adminId);
 }

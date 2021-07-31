@@ -1,6 +1,7 @@
 package com.blog.service;
 
 import com.blog.model.bean.ResultData;
+import com.blog.model.entity.ArticleAdminDTO;
 
 /**
  * <p>
@@ -14,4 +15,6 @@ public interface ArticleAdminService {
 
 
     ResultData getCountByAdminId(Long adminId);
+
+    ResultData save(ArticleAdminDTO articleAdminDTO);
 }

@@ -208,7 +208,12 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public ResultData getTopicList(int count, String label, Long adminId) {
-        List<Article> data = articleDao.getTopicList(count, label, adminId);
+        List<Article> data = new ArrayList<>();
+        if (StringUtils.isBlank(label)) {
+            data = articleDao.getTopicList(adminId);
+        } else {
+            data = articleDao.getTopicList(label, adminId);
+        }
         if (data.size() == 0) {
             return ResultData.ok();
         }

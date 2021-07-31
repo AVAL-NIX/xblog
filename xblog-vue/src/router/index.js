@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Login from '@/pages/front/Login'
 import Topic from '@/pages/front/Topic'
 import User from '@/pages/front/User'
+import TopicList from '@/pages/front/topic/TopicList'
 
 Vue.use(Router)
 
@@ -33,6 +34,14 @@ export default new Router({
       meta: {
         title: '刷题',
         showNav: true
+      }
+    }, {
+      path: '/topic/list',
+      name: 'topic',
+      component: TopicList,
+      meta: {
+        title: '刷题列表',
+        showNav: false
       }
     }, {
       path: '/User',

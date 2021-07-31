@@ -1,10 +1,5 @@
 <template>
   <div>
-    <van-image
-      width="100"
-      height="100"
-      :src="logo"
-    />
     <van-form @submit="onSubmit">
       <van-field
         v-model="username"
@@ -28,7 +23,7 @@
   </div>
 </template>
 <script>
-import {setToken} from '@/util/auth'
+import {setToken, setUserinfo} from '@/util/auth'
 
 export default {
   data () {
@@ -55,8 +50,9 @@ export default {
         username: this.username,
         password: this.password
       }).then(res => {
-        let token = res.data
-        setToken(token)
+        let user = res.data
+        setToken(user.token)
+        setUserinfo(user)
         this.$router.push({path: this.redirect || '/', query: this.otherQuery})
       })
     }

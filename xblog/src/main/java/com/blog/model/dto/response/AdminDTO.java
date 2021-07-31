@@ -1,11 +1,7 @@
-package com.blog.model.entity;
+package com.blog.model.dto.response;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.time.LocalDateTime;
 
 /**
@@ -14,15 +10,12 @@ import java.time.LocalDateTime;
  * @author zx
  * @date 2018/12/18
  */
-@Entity
 @Data
-public class Admin {
+public class AdminDTO {
 
     /**
      * 用户ID
      **/
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**
@@ -61,14 +54,8 @@ public class Admin {
     private LocalDateTime updateDate;
 
     /**
-     * 提交凭证
-     **/
-    private String submitToken;
-
-    /**
-     * 盐
-     **/
-    private String salt;
-
+     * 登录凭证
+     */
+    private String token;
 
 }

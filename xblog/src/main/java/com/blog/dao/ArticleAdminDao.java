@@ -22,5 +22,7 @@ public interface ArticleAdminDao extends JpaRepository<ArticleAdmin, Long>, JpaS
      */
     @Query(nativeQuery = true, value = " select count(1) from article_admin a " +
             " where a.admin_id = ?1   ")
-    Object getCountByAdminId(Long adminId);
+    int getCountByAdminId(Long adminId);
+
+    ArticleAdmin findByAdminIdAndArticleId(Long adminId, Long articleId);
 }

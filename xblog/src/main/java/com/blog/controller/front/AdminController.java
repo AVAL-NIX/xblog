@@ -1,6 +1,8 @@
 package com.blog.controller.front;
 
 import com.blog.model.bean.ResultData;
+import com.blog.model.dto.response.AdminResponseDTO;
+import com.blog.service.ArticleAdminService;
 import com.blog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +19,8 @@ public class AdminController {
 
     @Autowired
     ArticleService articleService;
+    @Autowired
+    ArticleAdminService articleAdminService;
 
 
     /**
@@ -27,18 +31,18 @@ public class AdminController {
     @PostMapping(value = "/random")
     public ResultData random(int count, String label, Long adminId) {
 
-        return ResultData.ok("查询成功!", articleService.getTopicList(count, label, adminId));
+        return articleService.getTopicList(count, label, adminId);
     }
 
-
     /**
-     * 对某个用户进行随机
+     * 获取用户信息
      *
      * @return
      */
-    @PostMapping(value = "/admin/info")
-    public ResultData getAdminInfo(int count, String label, Long adminId) {
-
-        return ResultData.ok("查询成功!", articleService.getTopicList(count, label, adminId));
+    @PostMapping(value = "/topic/info")
+    public ResultData getTopicInfo(Long adminId) {
+        ResultData<Integer> resultData = articleService.listTopicCount();
+        ResultData<Integer> resultData2 = articleAdminService.getCountByAdminId(adminId);
+        return ResultData.ok("查询成功!", new AdminResponseDTO(resultData.getData(), resultData2.getData()));
     }
 }

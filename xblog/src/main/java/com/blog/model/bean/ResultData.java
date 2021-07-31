@@ -131,7 +131,7 @@ public class ResultData<T> {
      * @return
      */
     public static ResultData ok() {
-        return new ResultData(1, "处理成功!");
+        return new ResultData(200, "处理成功!");
     }
 
 
