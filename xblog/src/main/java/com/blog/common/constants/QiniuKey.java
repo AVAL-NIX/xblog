@@ -31,4 +31,11 @@ public class QiniuKey {
         SECRET_KEY = secretKey;
     }
 
+    /** 7牛云资源公有访问地址 **/
+
+    public static String ACCESS_URL;
+    @Value("${qiNiu.accessUrl}")
+    public  void setAccessUrl(String accessUrl) {
+        ACCESS_URL = accessUrl;
+    }
 }

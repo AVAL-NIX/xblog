@@ -1,6 +1,7 @@
 package com.blog.controller.common;
 
 import com.blog.common.constants.AppConstants;
+import com.blog.common.constants.QiniuKey;
 import com.blog.common.utils.QiNiuApiUtil;
 import com.blog.common.utils.WebUtils;
 import com.blog.model.bean.ResultData;
@@ -57,7 +58,7 @@ public class FileController extends BaseController {
             if(rs.statusCode == 200) {
                 // fileName 浏览也许需要
                 log.info("上传成功! " + fileName);
-                return ResultData.ok(WebUtils.getBaseUrl() + AppConstants.UPLOAD_PATH + fileName);
+                return ResultData.ok(QiniuKey.ACCESS_URL + fileName);
             }
 
         } catch (IOException e) {
