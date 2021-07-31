@@ -141,6 +141,15 @@
             <version>3.4.0</version>
         </dependency>
 
+        <!-- 7牛云 -->
+        <dependency>
+            <groupId>com.qiniu</groupId>
+            <artifactId>qiniu-java-sdk</artifactId>
+            <version>[7.7.0, 7.7.99]</version>
+        </dependency>
+
+
+
     </dependencies>
 
     <build>
