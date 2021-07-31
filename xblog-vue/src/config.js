@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === 'development') {
   }
 } else {
   prodUrl = {
-    // baseApi: 'http://localhost:8888'
+    baseApi: 'https://avalon-zheng.xin/api2'
   }
 }
 
