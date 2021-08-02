@@ -9,23 +9,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55d4a103-8242-49b6-bcfa-ab0d21339f4a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xblog-topic/http/三次握手.md" beforeDir="false" afterPath="$PROJECT_DIR$/xblog-topic/http/三次握手.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xblog-vue/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/xblog-vue/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xblog-vue/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/xblog-vue/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xblog-vue/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/xblog-vue/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xblog-vue/src/api/front/articleAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/xblog-vue/src/api/front/articleAdmin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xblog-vue/src/pages/front/Topic.vue" beforeDir="false" afterPath="$PROJECT_DIR$/xblog-vue/src/pages/front/Topic.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xblog-vue/src/pages/front/topic/TopicList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/xblog-vue/src/pages/front/topic/TopicList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xblog-vue/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/xblog-vue/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xblog/src/main/java/com/blog/common/config/WebMvcMyConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/xblog/src/main/java/com/blog/common/config/WebMvcMyConfigurer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xblog/src/main/java/com/blog/controller/front/ArticleAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/xblog/src/main/java/com/blog/controller/front/ArticleAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xblog/src/main/java/com/blog/controller/front/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/xblog/src/main/java/com/blog/controller/front/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xblog/src/main/java/com/blog/dao/ArticleAdminDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/xblog/src/main/java/com/blog/dao/ArticleAdminDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xblog/src/main/java/com/blog/exception/FrontException.java" beforeDir="false" afterPath="$PROJECT_DIR$/xblog/src/main/java/com/blog/exception/FrontException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xblog/src/main/java/com/blog/service/ArticleAdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/xblog/src/main/java/com/blog/service/ArticleAdminService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xblog/src/main/java/com/blog/service/impl/ArticleAdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/xblog/src/main/java/com/blog/service/impl/ArticleAdminServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xblog/src/main/java/com/blog/service/impl/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/xblog/src/main/java/com/blog/service/impl/ArticleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xblog-vue/build/webpack.base.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/xblog-vue/build/webpack.base.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xblog-vue/src/assets/markdown.css" beforeDir="false" afterPath="$PROJECT_DIR$/xblog-vue/src/assets/markdown.css" afterDir="false" />
     </list>
     <list id="8bda4a76-1b55-4913-a454-89352e6d9c41" name="1" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -165,7 +151,7 @@
       <workItem from="1627371951932" duration="60348000" />
       <workItem from="1627867772848" duration="2618000" />
       <workItem from="1627871452760" duration="8000" />
-      <workItem from="1627871531530" duration="9789000" />
+      <workItem from="1627871531530" duration="10172000" />
     </task>
     <task id="LOCAL-00001" summary="初始提交">
       <created>1627380034140</created>
@@ -244,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627875318125</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="优化文章保存逻辑">
+      <created>1627892225744</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1627892225744</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,10 +315,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="690" y="271" width="540" height="505" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1627372219878" />
-    <state x="560" y="111" key="CommitChangelistDialog2" timestamp="1627875316287">
+    <state x="560" y="111" key="CommitChangelistDialog2" timestamp="1627892223910">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="560" y="111" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1627875316287" />
+    <state x="560" y="111" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1627892223910" />
     <state width="879" height="466" key="DebuggerActiveHint" timestamp="1627874334590">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -338,22 +331,22 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="740" y="280" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1627376029739" />
-    <state width="1921" height="360" key="GridCell.Tab.0.bottom" timestamp="1627890205423">
+    <state width="1921" height="302" key="GridCell.Tab.0.bottom" timestamp="1627892570680">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1921" height="360" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1627890205423" />
-    <state width="1921" height="360" key="GridCell.Tab.0.center" timestamp="1627890205422">
+    <state width="1921" height="302" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1627892570680" />
+    <state width="1921" height="302" key="GridCell.Tab.0.center" timestamp="1627892570680">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1921" height="360" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1627890205422" />
-    <state width="1921" height="360" key="GridCell.Tab.0.left" timestamp="1627890205422">
+    <state width="1921" height="302" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1627892570680" />
+    <state width="1921" height="302" key="GridCell.Tab.0.left" timestamp="1627892570680">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1921" height="360" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1627890205422" />
-    <state width="1921" height="360" key="GridCell.Tab.0.right" timestamp="1627890205423">
+    <state width="1921" height="302" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1627892570680" />
+    <state width="1921" height="302" key="GridCell.Tab.0.right" timestamp="1627892570680">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1921" height="360" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1627890205423" />
+    <state width="1921" height="302" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1627892570680" />
     <state width="1921" height="360" key="GridCell.Tab.1.bottom" timestamp="1627890205423">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -402,10 +395,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="806" y="437" key="VCS.ChangelistChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1627456688136" />
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1627875342000">
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1627892235506">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1627875342000" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1627892235506" />
     <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1627875032493">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
