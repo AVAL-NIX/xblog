@@ -3,9 +3,11 @@ package com.blog.dao;
 import com.blog.model.entity.ArticleAdmin;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 
@@ -25,4 +27,9 @@ public interface ArticleAdminDao extends JpaRepository<ArticleAdmin, Long>, JpaS
     int getCountByAdminId(Long adminId);
 
     ArticleAdmin findByAdminIdAndArticleId(Long adminId, Long articleId);
+
+    @Modifying
+    @Transactional
+    @Query(nativeQuery = true, value = " delete from article_admin where admin_id = ?1  ")
+    int deleteByAdminId(Long adminId);
 }

@@ -89,10 +89,11 @@ public class ArticleServiceImpl implements ArticleService {
         boolean addFlag = false;
         if (article == null) {
             addFlag = true;
-            article.setId(null);
+            article = new Article();
             article.setSalt(RandomStringUtils.randomAlphanumeric(16));
             article.setSubmitToken(EncryptUtil.getInstance().encodeAes(article.getSalt(), SystemConstants.DESKEY));
             article.setStatus(ArticleStatus.PUBLISH.getCode());
+            article.setAdminId(articleDTO.getAdminId());
         }
         article.setTitle(articleDTO.getTitle());
         article.setContent(articleDTO.getContent());

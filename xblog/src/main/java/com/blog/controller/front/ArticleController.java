@@ -58,10 +58,10 @@ public class ArticleController extends BaseController {
         }
 
         articleDTO.setAdminId(((Admin) r.getData()).getId());
-        ResultData<String> result = articleService.save(articleDTO);
-        articleDTO.setSubmitToken(result.getData());
-        r.setData(articleDTO);
-        return r;
+        ResultData result = articleService.save(articleDTO);
+        articleDTO.setSubmitToken(result.getData().toString());
+        result.setData(articleDTO);
+        return result;
     }
 
 

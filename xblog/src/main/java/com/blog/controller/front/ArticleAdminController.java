@@ -4,10 +4,7 @@ import com.blog.model.bean.ResultData;
 import com.blog.model.entity.ArticleAdminDTO;
 import com.blog.service.ArticleAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author zhengxin
@@ -31,6 +28,17 @@ public class ArticleAdminController {
     public ResultData random(@RequestBody ArticleAdminDTO articleAdminDTO) {
 
         return articleAdminService.save(articleAdminDTO);
+    }
+
+    /**
+     * 对某个用户进行重新开始
+     *
+     * @return
+     */
+    @GetMapping(value = "/del/all")
+    public ResultData delAll(Long adminId) {
+
+        return articleAdminService.deleteByAdminId(adminId);
     }
 
 }

@@ -7,3 +7,11 @@ export function save (data) {
     data
   })
 }
+
+export function delAll (data) {
+  return request({
+    url: '/article-admin/del/all',
+    method: 'get',
+    params: data
+  })
+}

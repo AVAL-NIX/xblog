@@ -4,12 +4,13 @@
       <van-button type="info" class="classButton" @click="random()">随机开始</van-button>
       <van-divider>刷题进度</van-divider>
       <van-progress :percentage="plan"  class="class90"/>
+         <van-button type="info" class="classButton" @click="clearSubmit()">清除所有已做</van-button>
     </div>
   </div>
 
 </template>
 <script>
-
+import {getUserinfo} from '@/util/auth'
 export default {
   data () {
     return {
@@ -18,7 +19,8 @@ export default {
         processCount: 0
       },
       topicList: [],
-      showTopic: 1
+      showTopic: 1,
+      adminId: 0
     }
   },
   computed: {
@@ -30,8 +32,9 @@ export default {
     }
   },
   mounted () {
+    this.adminId = getUserinfo().id
     this.$api.admin.topicInfo({
-      adminId: 1
+      adminId: this.adminId
     }).then(res => {
       this.topicInfo = res.data
     })
@@ -39,6 +42,13 @@ export default {
   methods: {
     random () {
       this.$router.push('/topic/list')
+    },
+    clearSubmit () {
+      this.$api.articleAdmin.delAll({
+        adminId: this.adminId
+      }).then(res => {
+        this.$message('清除成功！')
+      })
     }
   }
 }

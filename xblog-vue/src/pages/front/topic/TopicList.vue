@@ -12,10 +12,12 @@
         </van-steps>
       </div>
       <div>
+          <van-divider />
+         <div style="font-size:19px;width:90%;margin:5%;"> {{item.title }}</div>
           <van-collapse v-model="activeNames">
           <van-collapse-item name="1" >
             <template #title>
-              <div> {{item.title }}</div>
+              <div> {{item.intro }}</div>
             </template>
             <div v-html="content" class="markdown"></div>
           </van-collapse-item>
@@ -137,10 +139,13 @@ export default {
 }
 </script>
 
-<style scoped >
+<style lang="scss" scoped >
 .van-steps{
   padding:15px;
   margin: 0px 15px 0px 15px;
+}
+/deep/ .van-collapse-item__content{
+  padding: 0px 10px 0px 10px !important;
 }
 .footer{
   position: fixed;

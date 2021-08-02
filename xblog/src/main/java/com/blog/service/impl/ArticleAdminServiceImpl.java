@@ -41,4 +41,10 @@ public class ArticleAdminServiceImpl implements ArticleAdminService {
         articleAdmin.setCreateDate(LocalDateTime.now());
         return ResultData.data(articleAdminDao.save(articleAdmin));
     }
+
+
+    @Override
+    public ResultData deleteByAdminId(Long adminId) {
+        return ResultData.data(articleAdminDao.deleteByAdminId(adminId));
+    }
 }

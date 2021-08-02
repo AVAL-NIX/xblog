@@ -17,4 +17,6 @@ public interface ArticleAdminService {
     ResultData getCountByAdminId(Long adminId);
 
     ResultData save(ArticleAdminDTO articleAdminDTO);
+
+    ResultData deleteByAdminId(Long adminId);
 }

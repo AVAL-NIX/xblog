@@ -19,6 +19,7 @@ public class FrontException {
     @ExceptionHandler(Exception.class)
     public @ResponseBody
     ResultData exception(Exception ex) {
+        log.error(" com.blog.controller.front 异常 ", ex);
         if (ex instanceof ResultException) {
             return ResultData.error(((ResultException) ex).getMsg());
         }

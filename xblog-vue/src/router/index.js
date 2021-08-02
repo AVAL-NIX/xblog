@@ -12,9 +12,9 @@ export default new Router({
     {
       path: '/',
       name: 'index',
-      component: User,
+      component: Topic,
       meta: {
-        title: '用户',
+        title: '刷题',
         showNav: true
       }
     },
