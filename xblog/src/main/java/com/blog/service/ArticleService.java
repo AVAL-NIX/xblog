@@ -14,10 +14,6 @@ import org.springframework.data.domain.PageRequest;
  */
 public interface ArticleService {
 
-    ResultData updateById(ArticleDTO articleDTO);
-
-    ResultData updateBySign(ArticleDTO articleDTO);
-
     ResultData save(ArticleDTO articleDTO);
 
     ResultData page(PageRequest page, ArticleDTO articleDTO);

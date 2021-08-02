@@ -1,7 +1,7 @@
 {
-  "name": "my-project",
+  "name": "xblog",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "",
   "author": "zhengxin <xin.zheng@lolaage.com>",
   "private": true,
   "scripts": {

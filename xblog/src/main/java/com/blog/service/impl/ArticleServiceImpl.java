@@ -8,7 +8,6 @@ import com.blog.common.utils.StrUtil;
 import com.blog.dao.ArticleAdminDao;
 import com.blog.dao.ArticleDao;
 import com.blog.model.bean.ResultData;
-import com.blog.model.converter.ArticleConverter;
 import com.blog.model.dto.request.ArticleDTO;
 import com.blog.model.entity.Article;
 import com.blog.model.enums.ArticleStatus;
@@ -62,113 +61,77 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     @Transactional
-    public ResultData updateById(ArticleDTO articleDTO) {
+    public ResultData save(ArticleDTO articleDTO) {
         // 新增频道
-        ResultData<Long> r = channelService.saveByName(articleDTO.getChannel());
-        if (r.getCode() < 1) {
+        Long channelId = null;
+        if (StringUtils.isNotBlank(articleDTO.getChannel())) {
+            ResultData<Long> r = channelService.saveByName(articleDTO.getChannel());
+            if (r.getCode() < 1) {
 
-            return r;
+                return r;
+            }
+            channelId = r.getData();
         }
-        Long channelId = r.getData();
-        // 新增标签 , 标签绑定的频道不删除
-        ResultData<List<Long>> r1 = labelService.saveByName(channelId, articleDTO.getLabels());
-        if (r.getCode() < 1) {
+        List<Long> tagIds = new ArrayList<>();
+        if (channelId != null && StringUtils.isNotBlank(articleDTO.getLabels())) {
+            // 新增标签 , 标签绑定的频道不删除
+            ResultData<List<Long>> r = labelService.saveByName(channelId, articleDTO.getLabels());
+            if (r.getCode() < 1) {
 
-            return r;
+                return r;
+            }
+            tagIds = r.getData();
         }
-        List<Long> tagIds = r1.getData();
+
         // 修改文章
         Article article = articleDao.findBySubmitToken(articleDTO.getSubmitToken());
+        //如果数据库没有，是新增
+        boolean addFlag = false;
         if (article == null) {
-
-            return ResultData.error("文章不存在!");
+            addFlag = true;
+            article.setId(null);
+            article.setSalt(RandomStringUtils.randomAlphanumeric(16));
+            article.setSubmitToken(EncryptUtil.getInstance().encodeAes(article.getSalt(), SystemConstants.DESKEY));
+            article.setStatus(ArticleStatus.PUBLISH.getCode());
         }
         article.setTitle(articleDTO.getTitle());
-        article.setUpdateDate(LocalDateTime.now());
+        article.setContent(articleDTO.getContent());
         article.setLabels(articleDTO.getLabels());
         article.setChannel(articleDTO.getChannel());
+        article.setUpdateDate(LocalDateTime.now());
         article.setImages(StrUtil.findImageByContent(articleDTO.getContent()));
         article.setIntro(StrUtil.findIntro(articleDTO.getContent()));
         Article article1 = articleDao.save(article);
         if (article1 == null) {
 
-            return ResultData.error();
+            return ResultData.error(" 文章保存失败 ");
         }
         // 先全部删除文章标签,在添加
-        r = articleLabelService.deleteByArticleId(article.getId());
+        ResultData<Long> r = articleLabelService.deleteByArticleId(article1.getId());
         if (!r.isOk()) {
 
             return ResultData.error();
         }
         //添加
-        r = articleLabelService.saveByTagsAndArticleId(tagIds, article.getId());
+        r = articleLabelService.saveByTagsAndArticleId(tagIds, article1.getId());
         if (r.getCode() < 1) {
 
             return r;
         }
         //检查有没有文章详细
-        r = articleDetailService.findByArticleId(article.getId());
+        r = articleDetailService.findByArticleId(article1.getId());
         if (r.getData() == null) {
             // 新增文章详细
-            r = articleDetailService.save(article.getId());
+            r = articleDetailService.save(article1.getId());
             if (!r.isOk()) {
 
                 return ResultData.error("新增文章详细失败!");
             }
         }
 
-        return ResultData.ok("更新文章成功!", article.getSubmitToken());
+        return ResultData.ok(addFlag ? "保存文章成功! " : "更新文章成功 !", article1.getSubmitToken());
     }
 
-    @Override
-    @Transactional
-    public ResultData updateBySign(ArticleDTO articleDTO) {
-        // 修改文章
-        Article article = articleDao.findBySubmitToken(articleDTO.getSubmitToken());
-        if (article == null) {
-
-            return ResultData.error("文章不存在!");
-        }
-        article = ArticleConverter.dtoToObj(articleDTO, article);
-        article.setUpdateDate(LocalDateTime.now());
-        article.setImages(StrUtil.findImageByContent(articleDTO.getContent()));
-        article.setIntro(StrUtil.findIntro(articleDTO.getContent()));
-        Article article1 = articleDao.save(article);
-        if (article1 == null) {
-
-            return ResultData.error("更新文章失败!");
-        }
-
-        return ResultData.ok("更新文章成功!", article.getSubmitToken());
-    }
-
-
-    @Override
-    @Transactional
-    public ResultData save(ArticleDTO articleDTO) {
-        // 新增文章
-        Article article = ArticleConverter.dtoToObj(articleDTO);
-        article.setCreateDate(LocalDateTime.now());
-        article.setUpdateDate(null);
-        article.setSalt(RandomStringUtils.randomAlphanumeric(16));
-        article.setSubmitToken(EncryptUtil.getInstance().encodeAes(article.getSalt(), SystemConstants.DESKEY));
-        article.setImages(StrUtil.findImageByContent(articleDTO.getContent()));
-        article.setIntro(StrUtil.findIntro(articleDTO.getContent()));
-        article.setStatus(ArticleStatus.PUBLISH.getCode());
-        Article article1 = articleDao.save(article);
-        if (article1 == null) {
-
-            return ResultData.error();
-        }
-
-        // 新增文章详细
-        ResultData r = articleDetailService.save(article.getId());
-        if (!r.isOk()) {
-            return ResultData.error("新增文章详细失败!");
-        }
-
-        return ResultData.ok("发布文章成功!", article.getSubmitToken());
-    }
 
     @Override
     public ResultData page(PageRequest page, ArticleDTO article) {
