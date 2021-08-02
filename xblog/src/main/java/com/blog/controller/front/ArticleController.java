@@ -82,7 +82,7 @@ public class ArticleController extends BaseController {
             return r;
         }
 
-        ResultData<Page<Article>> r2 = articleService.page(PageRequest.of(1, 10), articleDTO);
+        ResultData<Page<Article>> r2 = articleService.page(PageRequest.of(0, 10), articleDTO);
         List<ArticleDTO> articleVOList = new ArrayList<>();
         if (r2.getData().getContent().size() > 0) {
             for (Article article : r2.getData().getContent()) {
