@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand />
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="55d4a103-8242-49b6-bcfa-ab0d21339f4a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/xblog-vue/xblog-vue.iml" beforeDir="false" afterPath="$PROJECT_DIR$/xblog-vue/xblog-vue.iml" afterDir="false" />
+    </list>
+    <list id="8bda4a76-1b55-4913-a454-89352e6d9c41" name="1" comment="">
+      <change beforePath="$PROJECT_DIR$/xblog-vue/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/xblog-vue/package-lock.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JRebelWorkspace">
+    <option name="jrebelEnabledAutocompile" value="true" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="C:\Users\Administrator\.m2\repository" />
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.3\plugins\maven\lib\maven3" />
+        <option name="userSettingsFile" value="C:\Users\Administrator\.m2\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1vquufKHJZiAq3CDTol7I7OOVaG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/xblog-vue/src/pages/front" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\github\xx\xblog-vue\src\pages\front" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.blog.model.converter" />
+      <recent name="com.blog.model.entity" />
+      <recent name="com.blog.controller.front" />
+      <recent name="com.blog.model.dto.response" />
+      <recent name="com.blog.dao" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\github\xx\xblog-vue\src\pages\front" />
+      <recent name="D:\github\xx\xblog-vue\src" />
+      <recent name="D:\github\xx\xblog-vue\src\util" />
+      <recent name="D:\github\xx\xblog\src\main\java\com\blog\model\annotation" />
+      <recent name="D:\github\xx\xblog-vue\src\api" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.BlogApplication">
+    <configuration name="BlogApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.blog.BlogApplication" />
+      <module name="blog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.blog.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BlogApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="blog" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.blog.BlogApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.BlogApplication" />
+      <item itemvalue="Spring Boot.BlogApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.BlogApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="55d4a103-8242-49b6-bcfa-ab0d21339f4a" name="Default Changelist" comment="" />
+      <changelist id="8bda4a76-1b55-4913-a454-89352e6d9c41" name="1" comment="" />
+      <created>1627302164212</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1627302164212</updated>
+      <workItem from="1627302178081" duration="15754000" />
+      <workItem from="1627371951932" duration="60348000" />
+      <workItem from="1627867772848" duration="396000" />
+    </task>
+    <task id="LOCAL-00001" summary="初始提交">
+      <created>1627380034140</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1627380034141</updated>
+    </task>
+    <task id="LOCAL-00002" summary="初始提交">
+      <created>1627384978332</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1627384978332</updated>
+    </task>
+    <task id="LOCAL-00003" summary="JWT登录提交">
+      <created>1627452092038</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1627452092038</updated>
+    </task>
+    <task id="LOCAL-00004" summary="JWT登录提交">
+      <created>1627456722411</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1627456722411</updated>
+    </task>
+    <task id="LOCAL-00005" summary="JWT登录提交">
+      <created>1627459317801</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1627459317801</updated>
+    </task>
+    <task id="LOCAL-00006" summary="后台获取题目提交">
+      <created>1627615184757</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1627615184757</updated>
+    </task>
+    <task id="LOCAL-00007" summary="刷题版本第一次提交">
+      <created>1627711640424</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1627711640424</updated>
+    </task>
+    <task id="LOCAL-00008" summary="七牛云地址更新">
+      <created>1627720198711</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1627720198711</updated>
+    </task>
+    <task id="LOCAL-00009" summary="配置文件更新">
+      <created>1627725591687</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1627725591687</updated>
+    </task>
+    <task id="LOCAL-00010" summary="配置文件更新">
+      <created>1627728489949</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1627728489949</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:D:/github/xx/xblog/src/main/java/com/blog/common" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="1" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="初始提交" />
+    <MESSAGE value="JWT登录提交" />
+    <MESSAGE value="后台获取题目提交" />
+    <MESSAGE value="刷题版本第一次提交" />
+    <MESSAGE value="七牛云地址更新" />
+    <MESSAGE value="配置文件更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="配置文件更新" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="180" width="1186" height="690" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1627559840209">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="414" y="180" width="1186" height="690" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1627559840209" />
+    <state x="700" y="325" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1627376149032">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="700" y="325" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1627376149032" />
+    <state x="765" y="230" key="#com.intellij.ide.util.MemberChooser" timestamp="1627701234379">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="765" y="230" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1627701234379" />
+    <state x="613" y="448" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1627388840069">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="613" y="448" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1627388840069" />
+    <state x="653" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1627558903720">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="653" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1627558903720" />
+    <state x="690" y="271" width="540" height="505" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1627372219878">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="690" y="271" width="540" height="505" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1627372219878" />
+    <state x="560" y="111" key="CommitChangelistDialog2" timestamp="1627728483889">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="560" y="111" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1627728483889" />
+    <state width="879" height="466" key="DebuggerActiveHint" timestamp="1627714372843">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="879" height="466" key="DebuggerActiveHint/0.0.1920.1050@0.0.1920.1050" timestamp="1627714372843" />
+    <state x="184" y="87" key="DiffContextDialog" timestamp="1627725577897">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="184" y="87" key="DiffContextDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1627725577897" />
+    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1627376029739">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="740" y="280" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1627376029739" />
+    <state width="1921" height="360" key="GridCell.Tab.0.bottom" timestamp="1627729768733">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="360" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1627729768733" />
+    <state width="1921" height="360" key="GridCell.Tab.0.center" timestamp="1627729768732">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="360" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1627729768732" />
+    <state width="1921" height="360" key="GridCell.Tab.0.left" timestamp="1627729768732">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="360" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1627729768732" />
+    <state width="1921" height="360" key="GridCell.Tab.0.right" timestamp="1627729768733">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="360" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1627729768733" />
+    <state width="1921" height="360" key="GridCell.Tab.1.bottom" timestamp="1627729768734">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="360" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1627729768734" />
+    <state width="1921" height="360" key="GridCell.Tab.1.center" timestamp="1627729768733">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="360" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1627729768733" />
+    <state width="1921" height="360" key="GridCell.Tab.1.left" timestamp="1627729768733">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="360" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1627729768733" />
+    <state width="1921" height="360" key="GridCell.Tab.1.right" timestamp="1627729768733">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="360" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1627729768733" />
+    <state width="1921" height="360" key="GridCell.Tab.2.bottom" timestamp="1627729768734">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="360" key="GridCell.Tab.2.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1627729768734" />
+    <state width="1921" height="360" key="GridCell.Tab.2.center" timestamp="1627729768734">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="360" key="GridCell.Tab.2.center/0.0.1920.1050@0.0.1920.1050" timestamp="1627729768734" />
+    <state width="1921" height="360" key="GridCell.Tab.2.left" timestamp="1627729768734">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="360" key="GridCell.Tab.2.left/0.0.1920.1050@0.0.1920.1050" timestamp="1627729768734" />
+    <state width="1921" height="360" key="GridCell.Tab.2.right" timestamp="1627729768734">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="360" key="GridCell.Tab.2.right/0.0.1920.1050@0.0.1920.1050" timestamp="1627729768734" />
+    <state x="600" y="228" key="NewModule_or_Project.wizard" timestamp="1627376035589">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="600" y="228" key="NewModule_or_Project.wizard/0.0.1920.1050@0.0.1920.1050" timestamp="1627376035589" />
+    <state x="531" y="44" width="858" height="666" key="Registry" timestamp="1627456805898">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="531" y="44" width="858" height="666" key="Registry/0.0.1920.1050@0.0.1920.1050" timestamp="1627456805898" />
+    <state x="440" y="99" key="SettingsEditor" timestamp="1627712914642">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="440" y="99" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1627712914642" />
+    <state x="806" y="437" key="VCS.ChangelistChooser" timestamp="1627456688136">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="806" y="437" key="VCS.ChangelistChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1627456688136" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1627725594673">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1627725594673" />
+    <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1627702823799">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1627702823799" />
+    <state x="763" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1627716655031">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="763" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1050@0.0.1920.1050" timestamp="1627716655031" />
+    <state x="662" y="228" width="596" height="594" key="find.popup" timestamp="1627453744229">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="662" y="228" width="596" height="594" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1627453744229" />
+    <state x="335" y="117" key="new project wizard" timestamp="1627376019318">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="335" y="117" key="new project wizard/0.0.1920.1050@0.0.1920.1050" timestamp="1627376019318" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1627456609351">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1627456609351" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/xblog/blog.iml" filepath="$PROJECT_DIR$/xblog/blog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xblog-vue/xblog-vue.iml" filepath="$PROJECT_DIR$/xblog-vue/xblog-vue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/xx.iml" filepath="$PROJECT_DIR$/.idea/xx.iml" />
+    </modules>
+  </component>
+</project>
