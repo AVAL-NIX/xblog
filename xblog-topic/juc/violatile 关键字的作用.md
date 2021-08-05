@@ -1,0 +1,20 @@
+---
+submitToken: CBB30B720340DC5742F763F76B8893639A170BE20BCF4D806F396F24ADB439DC
+title: violatile 关键字的作用？
+channel: topic
+labels: juc
+---
+
+> 一个非常重要的问题，是每个学习、应用多线程的 Java 程序员都必须掌握的。理解 volatile关键字的作用的前提是要理解 Java 内存模型，这里就不讲 Java 内存模型了
+
+
+
+volatile 关键字的作用主要有两个：
+
+- 1）(保证了其在多线程之间的可见性) 多线程主要围绕可见性和原子性两个特性而展开，使用 volatile 关键字修饰的变 量，保证了其在多线程之间的可见性，即每次读取到 volatile 变量，一定是最新的 数据
+
+- 2）(使用 volatile 则会对禁止语义重排序) 代码底层执行不像我们看到的高级语言----Java 程序这么简单，它的执行是 Java 代码–>字节码–>根据字节码执行对应的 C/C代码–>C/C代码被编译成汇编语 言–>和硬件电路交互，现实中，为了获取更好的性能 JVM 可能会对指令进行重排序，多线程下可能会出现一些意想不到的问题。使用 volatile 则会对禁止语义重排 序，当然这也一定程度上降低了代码执行效率从实践角度而言，volatile 的一个重 要 作 用 就 是 和 CAS 结 合 ， 保证了原子性 ，详细的可以参见 java.util.concurrent.atomic 包下的类，比如 AtomicInteger
+
+
+
+> (3)volatile变量规则：对一个volatile域的写，happens-before于任意后续对这个volatile域的读。
