@@ -5,7 +5,7 @@ let prodUrl = {
 // 开发环境
 if (process.env.NODE_ENV === 'development') {
   prodUrl = {
-    baseApi: 'http://localhost:8888'
+    baseApi: 'https://avalon-zheng.xin/api2'
   }
 } else {
   prodUrl = {

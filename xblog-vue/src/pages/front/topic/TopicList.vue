@@ -13,11 +13,11 @@
       </div>
       <div>
           <van-divider />
-         <div style="font-size:19px;width:90%;margin:5%;"> {{item.title }}</div>
+         <div style="font-size:24px;width:94%;margin:3%;"> {{item.title }}</div>
           <van-collapse v-model="activeNames">
           <van-collapse-item name="1" >
             <template #title>
-              <div> {{item.intro }}</div>
+              <div> </div>
             </template>
             <div v-html="content" class="markdown"></div>
           </van-collapse-item>
@@ -25,8 +25,8 @@
         <div style="height:20vh;width:100%"></div>
       </div>
       <div class="footer">
-          <van-button type="info" @click="submit(1)">不在出现</van-button>
-          <van-button type="info" @click="submit(2)">继续复习</van-button>
+          <van-button type="info" @click="submit(1)" :disabled="disabled">不在出现</van-button>
+          <van-button type="info" @click="submit(2)" :disabled="disabled">继续复习</van-button>
       </div>
     </div>
     <div v-if="topicList.length == 0">
@@ -48,6 +48,7 @@ export default {
       activeNames: ['0'],
       topicList: [],
       showPopup: false,
+      disabled:false,
       admin: {}, // 当前登录用户
       content: ''// 主体内容
     }
@@ -109,8 +110,10 @@ export default {
       this.$router.push('/topic')
     },
     async submit (type) {
+       this.disabled = true;
       // 拦截
       if (this.item == null || !this.item.id) {
+         this.disabled = false
         return
       }
       if (this.index === (this.topicList.length)) {
@@ -134,6 +137,18 @@ export default {
         console.log(' 什么也不做 ')
       }
       this.index++
+      this.disabled = false
+       this.checkEndTopic()
+    },
+    checkEndTopic(){
+      if (this.index === (this.topicList.length)) {
+        Dialog.confirm({
+          message: '已经是最后一题了，点击返回',
+          showCancelButton: false
+        }).then(res => {
+          this.$router.push('/topic')
+        })
+      }
     }
   }
 }
@@ -146,6 +161,7 @@ export default {
 }
 /deep/ .van-collapse-item__content{
   padding: 0px 10px 0px 10px !important;
+  color: #000;
 }
 .footer{
   position: fixed;
