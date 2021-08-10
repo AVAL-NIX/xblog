@@ -28,15 +28,15 @@
 
 
 .markdown h1 {
-  font-size: 32px;
-  line-height: 54px;
+  font-size: 28px;
+  line-height: 36px;
 }
 .markdown p{
     overflow: auto;
 }
 .markdown h2 {
-  font-size: 25px;
-  line-height: 42px;
+  font-size: 24px;
+  line-height: 30px;
 }
 
 .markdown h1,
@@ -46,8 +46,8 @@
 }
 
 .markdown h3 {
-  font-size: 21px;
-  line-height: 30px;
+  font-size: 22px;
+  line-height: 26px;
 }
 
 .markdown h4 {
