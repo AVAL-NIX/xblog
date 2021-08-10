@@ -48,7 +48,7 @@ export default {
       activeNames: ['0'],
       topicList: [],
       showPopup: false,
-      disabled:false,
+      disabled: false,
       admin: {}, // 当前登录用户
       content: ''// 主体内容
     }
@@ -110,10 +110,10 @@ export default {
       this.$router.push('/topic')
     },
     async submit (type) {
-       this.disabled = true;
+      this.disabled = true
       // 拦截
       if (this.item == null || !this.item.id) {
-         this.disabled = false
+        this.disabled = false
         return
       }
       if (this.index === (this.topicList.length)) {
@@ -138,9 +138,9 @@ export default {
       }
       this.index++
       this.disabled = false
-       this.checkEndTopic()
+      this.checkEndTopic()
     },
-    checkEndTopic(){
+    checkEndTopic () {
       if (this.index === (this.topicList.length)) {
         Dialog.confirm({
           message: '已经是最后一题了，点击返回',
@@ -150,6 +150,7 @@ export default {
         })
       }
     }
+
   }
 }
 </script>

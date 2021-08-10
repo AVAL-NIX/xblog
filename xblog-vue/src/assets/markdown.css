@@ -1,7 +1,7 @@
 .markdown body {
   margin: 0 auto;
   font-family: Helvetica, Arial, "PingFang SC", "Microsoft YaHei", "WenQuanYi Micro Hei", "tohoma,sans-serif";
-  color: #444444;
+  color: #444444 !important;
   line-height: 1;
   padding: 30px;
 }
@@ -25,6 +25,7 @@
   margin-bottom: 16px;
   padding: 0;
 }
+
 
 .markdown h1 {
   font-size: 32px;
@@ -50,8 +51,8 @@
 }
 
 .markdown h4 {
-  font-size: 19px;
-  line-height: 26px;
+  font-size: 18px;
+  line-height: 22px;
 }
 
 .markdown h5 {
@@ -80,11 +81,12 @@ a:visited {
   padding: 0;
   padding-left: 16px;
   margin: 0;
-  list-style-type:circle;
+  list-style-type:circle !important;
 }
 
 .markdown li {
   line-height: 24px;
+  list-style-type:circle !important;
 }
 
 .markdown p,
@@ -96,7 +98,7 @@ a:visited {
 
 .markdown ol ol,
 .markdown ul ol {
-  list-style-type:circle;
+  list-style-type:circle !important;
 }
 
 .markdown code,
