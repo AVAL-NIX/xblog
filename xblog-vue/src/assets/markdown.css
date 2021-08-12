@@ -1,7 +1,7 @@
 .markdown body {
   margin: 0 auto;
   font-family: Helvetica, Arial, "PingFang SC", "Microsoft YaHei", "WenQuanYi Micro Hei", "tohoma,sans-serif";
-  color: #444444;
+  color: #444444 !important;
   line-height: 1;
   padding: 30px;
 }
@@ -26,16 +26,17 @@
   padding: 0;
 }
 
+
 .markdown h1 {
-  font-size: 32px;
-  line-height: 54px;
+  font-size: 28px;
+  line-height: 36px;
 }
 .markdown p{
     overflow: auto;
 }
 .markdown h2 {
-  font-size: 25px;
-  line-height: 42px;
+  font-size: 24px;
+  line-height: 30px;
 }
 
 .markdown h1,
@@ -45,13 +46,13 @@
 }
 
 .markdown h3 {
-  font-size: 21px;
-  line-height: 30px;
+  font-size: 22px;
+  line-height: 26px;
 }
 
 .markdown h4 {
-  font-size: 19px;
-  line-height: 26px;
+  font-size: 18px;
+  line-height: 22px;
 }
 
 .markdown h5 {
@@ -80,11 +81,12 @@ a:visited {
   padding: 0;
   padding-left: 16px;
   margin: 0;
-  list-style-type:circle;
+  list-style-type:circle !important;
 }
 
 .markdown li {
   line-height: 24px;
+  list-style-type:circle !important;
 }
 
 .markdown p,
@@ -96,7 +98,7 @@ a:visited {
 
 .markdown ol ol,
 .markdown ul ol {
-  list-style-type:circle;
+  list-style-type:circle !important;
 }
 
 .markdown code,
