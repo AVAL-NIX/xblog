@@ -45,4 +45,6 @@ public class AdminController {
         ResultData<Integer> resultData2 = articleAdminService.getCountByAdminId(adminId);
         return ResultData.ok("查询成功!", new AdminResponseDTO(resultData.getData(), resultData2.getData()));
     }
+
+
 }

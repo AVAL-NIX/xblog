@@ -81,12 +81,12 @@ a:visited {
   padding: 0;
   padding-left: 16px;
   margin: 0;
-  list-style-type:circle !important;
+  list-style-type: disc !important;
 }
 
 .markdown li {
   line-height: 24px;
-  list-style-type:circle !important;
+  list-style-type: disc !important;
 }
 
 .markdown p,
@@ -94,11 +94,12 @@ a:visited {
 .markdown ol {
   font-size: 14px;
   line-height: 24px;
+  list-style-type: disc !important;
 }
 
 .markdown ol ol,
 .markdown ul ol {
-  list-style-type:circle !important;
+  list-style-type: disc !important;
 }
 
 .markdown code,
