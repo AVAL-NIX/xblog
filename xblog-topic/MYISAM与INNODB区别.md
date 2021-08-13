@@ -1,0 +1,7 @@
+---
+submitToken: FD4825B72FE20330CEF8E998298D29FAE30B279858707F14148BB27FE9448A2B
+title: MYISAM与INNODB区别?
+channel: topic
+labels: mysql
+---
+

@@ -1,0 +1,6 @@
+---
+submitToken: D7F4E1C8896AE1A15DC300C522147CD98674E38451044D34F6F0F591C65C131B
+title: MQ的作用
+channel: topic
+labels: message
+---
