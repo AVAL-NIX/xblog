@@ -18,3 +18,4 @@ labels: spring
 ## springboot
 
 - 开箱就用
+- 了解boot注解最好知道所有的注解的用处
