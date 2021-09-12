@@ -14,6 +14,43 @@ Nacos实现了服务的配置中心与服务注册发现的功能，Nacos可以�
 
 Sentinel是面向分布式微服务架构的轻量级高可用的流控组件，以流量作为切入点，从流量控制，熔断降级，系统负载保护等维度帮助用户保证服务的稳定性。常用与实现限流、熔断降级等策略。
 
+- 先设定规则
+
+```
+private void initSystemRule() {
+    List<SystemRule> rules = new ArrayList<>();
+    SystemRule rule = new SystemRule();
+    rule.setHighestSystemLoad(10);
+    rules.add(rule);
+    SystemRuleManager.loadRules(rules);
+}
+```
+
+- 在对进行限流的方法加注解
+
+```
+@SentinelResource("HelloWorld",fallback="xxx方法")
+public void helloWorld() {
+    // 资源中的逻辑
+    System.out.println("hello world");
+}
+```
+
+- 方式
+
+  - QPS
+  - 滑动窗口
+
+### nginx 限流
+
+- 通过限流模块，可以限制每个IP访问多少次
+
+
+> apache bench是压力测试工具
+
+![](https://image.avalon-zheng.xin/e03b8685-5904-40b3-9ecb-24b464d3eb73 "")
+
+
 ## RocketMQ (消息队列)
 
 RocketMQ基于Java的高性能、高吞吐量的消息队列，在SpringCloud Alibaba生态用于实现消息驱动的业务开发，常见的消息队列有Kafka、RocketMQ、RabbitMQ等，相关的比较文档可以自行去翻阅。
