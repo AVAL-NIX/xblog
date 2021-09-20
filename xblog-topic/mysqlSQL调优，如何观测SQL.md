@@ -5,3 +5,11 @@ channel: topic
 labels: mysql
 ---
 
+- 打开慢查询日记 。 一般超过1S的SQL需要优化
+
+- 针对慢查询的SQL 。 使用explan进行分析
+
+type : all 就很差
+key : 看是否命中索引
+row : 看扫描的表行。
+

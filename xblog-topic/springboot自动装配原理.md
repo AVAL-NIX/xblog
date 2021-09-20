@@ -5,6 +5,9 @@ channel: topic
 labels: spring
 ---
 
+这个就得从springboot项目的核心注解@SpringbootApplication说起了，这个注解包含了三个注解，其中一个是@EnableAutoConfiguration注解，这个注解主要是开启自动配置的，这个注解会"猜"你将如何配置 spring，前提是你已经添加 了 jar 依赖项，比如项目中引入了 spring-boot-starter-web ，这个包里已经添加 Tomcat 和 SpringMVC，这个注解节就会自动假设您在开发一个 web 应用程序并添加相应的 spring 配置，springboot默认有一个spring-boot-autoconfigure包，大多数常用的第三方的配置都自动集成了，像redis、es等，这里边有一个META-INF/spring.factories文件，这里边定义了所有需要加载的bean的全路径，spring会根据反射的原理，创建这些对象，放到IOC容器中，加载时需要的参数，通过JavaConfig的方式加载配置文件中的参数然后创建了对应的对象，这就是自动配置的原理
+
+
 ## 自己实现一个自动装配bean
 
 - 自己创建一个spring config 类，可能实例化了其他类，做一系列事

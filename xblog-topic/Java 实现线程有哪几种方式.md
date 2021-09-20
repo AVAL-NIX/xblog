@@ -5,8 +5,9 @@ channel: topic
 labels: juc
 ---
 
-3 种
+4 种
 
 - 继承 Thread 类实现多线程
 - 实现 Runnable 接口方式实现多线程
 - 使用 ExecutorService、Callable、Future 实现有返回结果的多线程
+- 线程池实现（运行）

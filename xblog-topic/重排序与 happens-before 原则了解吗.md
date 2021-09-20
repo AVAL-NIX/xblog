@@ -34,6 +34,14 @@ synchronized (this) { //此处自动加锁
 对一个volatile域的写，happens-before于任意后续对这个volatile域的读
 
 这个就有点费解了，对一个 volatile 变量的写操作相对于后续对这个 volatile 变量的读操作可见，这怎么看都是禁用缓存的意思啊，貌似和 1.5 版本以前的语义没有变化啊（前面讲的1.5版本前允许volatile变量和普通变量之间重排序）？如果单看这个规则，的确是这样，但是如果我们关联一下规则 4，你就能感受到变化了
+volatile boolean flag
+int x = 100 // 不会排序
+flag = true // 读
+
+if(flag){ //写
+  x = 10000 ; // 不会排序
+}
+
 ```
 
 - (4)传递性：如果A happens-before B，且B happens-before C，那么A happens-before C。
