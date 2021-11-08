@@ -9,7 +9,6 @@ export function getToken () {
 }
 
 export function setToken (token) {
-  // 给APP 传递登录信息  登录成功 ({"cookie":"cookie","uuid":"uuid"})
   return localStorage.setItem(TOKEN, token)
 }
 
@@ -43,7 +42,6 @@ export function setLogin (l) {
 export function logout () {
   removeToken()
   console.log('退出成功！')
-  // 给APP 传递登录信息  退出成功
   router.push('/')
 }
 

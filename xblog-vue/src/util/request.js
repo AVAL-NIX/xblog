@@ -1,7 +1,7 @@
 import axios from 'axios'
-import TOKEN, {doLogin, getToken, removeToken, setToken} from './auth'
+import TOKEN, { doLogin, getToken, removeToken, setToken } from './auth'
 import config from '@/config'
-import {Toast} from 'vant'
+import { Toast } from 'vant'
 
 const service = axios.create({
   baseURL: config.baseUrl.baseApi, // url = base url + request url
@@ -26,6 +26,8 @@ service.interceptors.response.use(
     if (response.headers[TOKEN]) {
       setToken(response.headers[TOKEN])
     }
+
+    console.log('response', response)
 
     switch (response.status) {
       case 404:
@@ -62,6 +64,10 @@ service.interceptors.response.use(
     } else {
       return Promise.resolve(result)
     }
+  },
+  (error) => {
+    console.log('error', error)
+    Toast('服务器暂时无法访问！')
   }
 )
 

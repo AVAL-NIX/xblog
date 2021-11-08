@@ -11,6 +11,7 @@ import com.blog.model.entity.Admin;
 import com.blog.service.AdminService;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.json.JSONObject;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,7 +33,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object object) throws Exception {
-
         // 如果不是映射到方法直接通过
         if (!(object instanceof HandlerMethod)) {
             return true;
@@ -50,7 +50,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             // 从 http 请求头中取出 token
             String token = httpServletRequest.getHeader("login-token");
             // 执行认证
-            if (token == null) {
+            if (StringUtils.isBlank(token)) {
                 responseResult(httpServletResponse, ResultData.error("无token，请重新登录"));
                 return false;
             }

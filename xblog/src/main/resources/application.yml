@@ -4,9 +4,9 @@ spring:
   datasource:
     name: test
     driver-class-name: com.mysql.jdbc.Driver
-    username: root
-    password: 123456
-    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: doilike
+    password: webDoilike6100!
+    url: jdbc:mysql://47.119.139.210:3306/blog?useUnicode=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true&characterEncoding=utf-8&serverTimezone=UTC
     type: com.alibaba.druid.pool.DruidDataSource
     filters: stat
     maxActive: 50 # 最大连接数
