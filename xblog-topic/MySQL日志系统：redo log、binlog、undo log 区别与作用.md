@@ -93,3 +93,4 @@ binlog日志有三种格式，分别为STATMENT、ROW和MIXED。
 
 基于STATMENT和ROW两种模式的混合复制(mixed-based replication, MBR)，一般的复制使用STATEMENT模式保存binlog，对于STATEMENT模式无法复制的操作使用ROW模式保存binlog
 
+
